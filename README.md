@@ -21,6 +21,7 @@ ID | Path | Description |
 2 | /posts | Vista de todo los posts creados por el usuario |
 3 | /edit | Vista de edición de posts |
 4 | /new-post | Vista de nueva entrada |
+4 | /liked | Vista de los posts que han gustado |
 
 ## Creator
 La Gabs
