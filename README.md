@@ -6,10 +6,8 @@ Write your fucking thing here
 
 ID | Method | Path | Description |
 --- | --- | --- | --- |
-1 | GET | /api/signup | Muestra formulario de registro del usuario |
 2 | POST | /api/signup | Guarda la información del registro del usuario|
 3 | GET | /back | Redirige al index|
-4 | GET | /api/login | Muestra formulario de inicio de sesión del usuario |
 5 | POST | /api/login  | Guarda la información de inicio de sesión del usuario |
 6 | GET | /:username | Muestra el perfil del usuario (área privada) |
 7 | GET | /api/logout  | Cierre de sesión |
