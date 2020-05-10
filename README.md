@@ -1,15 +1,22 @@
 # The Underground
 
-Write your fucking thing here
+Write your fucking thing here!!!!!!
+
+## Main Backend Routes
+
+ID | Path | Description |
+--- | --- | --- |
+1 | /api/user | Rutas de user |
+2 | /api/post | Rutas de posts |
 
 ## Backend Routes (USER)
 
 ID | Method | Path | Description |
 --- | --- | --- | --- |
 1 | POST | /user/signup | Guarda la información del registro del usuario|
-3 | POST | /user/login  | Guarda la información de inicio de sesión del usuario |
-4 | GET | /user/:username | Muestra el perfil del usuario (área privada) |
-5 | GET | /user/logout  | Cierre de sesión |
+2 | POST | /user/login  | Guarda la información de inicio de sesión del usuario |
+3 | GET | /user/:username | Muestra el perfil del usuario (área privada) |
+4 | GET | /user/logout  | Cierre de sesión |
 
 ## Backend Routes (POST)
 
