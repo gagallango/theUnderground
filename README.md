@@ -2,15 +2,23 @@
 
 Write your fucking thing here
 
-## Backend Routes
+## Backend Routes (USER)
 
 ID | Method | Path | Description |
 --- | --- | --- | --- |
-2 | POST | /api/signup | Guarda la información del registro del usuario|
-3 | GET | /back | Redirige al index|
-5 | POST | /api/login  | Guarda la información de inicio de sesión del usuario |
-6 | GET | /:username | Muestra el perfil del usuario (área privada) |
-7 | GET | /api/logout  | Cierre de sesión |
+1 | POST | /user/signup | Guarda la información del registro del usuario|
+3 | POST | /user/login  | Guarda la información de inicio de sesión del usuario |
+4 | GET | /user/:username | Muestra el perfil del usuario (área privada) |
+5 | GET | /user/logout  | Cierre de sesión |
+
+## Backend Routes (POST)
+
+ID | Method | Path | Description |
+--- | --- | --- | --- |
+1 | GET | /post/allPosts | Vista de todos los posts de usuarios |
+2 | GET | /post/allUserPosts/:id | Vista de los posts creados por un solo usuario|
+3 | POST | /post/newPost | Vista para crear new post |
+4 | POST | /post/editPost | Vista para editar post |
 
 ## Frontend Routes
 ID | Path | Description |
