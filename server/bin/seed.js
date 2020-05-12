@@ -7,37 +7,8 @@ const bcrypt = require('bcrypt')
 const bcryptSalt = 10
 const salt = bcrypt.genSaltSync(bcryptSalt)
 require('dotenv').config()
-
 mongoose.connect(`${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })
 
-const users = [
-    {
-        username: 'Gabriela',
-        email: 'ga.gallango@gmail.com',
-        password: bcrypt.hashSync('gaby', salt),
-        favoriteGenre: 'Narrative',
-        profilePic: '',
-        verificationToken: '',
-        recuperationToken: ''
-    },
-    {
-        username: 'juan',
-        email: 'juan@gmail.com',
-        password: bcrypt.hashSync('juan', salt),
-        favoriteGenre: 'NonFiction',
-        profilePic: '',
-        verificationToken: '',
-        recuperationToken: ''
-    },
-    {
-        username: 'Paco',
-        email: 'paco@paco.com',
-        password: bcrypt.hashSync('paco', salt),
-        favoriteGenre: 'Poetry',
-        profilePic: '',
-        verificationToken: '',
-        recuperationToken: ''
-    }]
 
 const randomNum = (max) => Math.floor(Math.random() * (max - 1))
 
@@ -51,44 +22,82 @@ const deleteComment = Comment.deleteMany()
 
 Promise.all([deleteUsers, deletePost, deleteComment])
     .then(() => {
-
-        User.create(users)
-            .then(allUsers => {
-                allU = allUsers
-                allUsers.forEach(user => {
-                    let posts = []
-                    for (let i = 1; i <= 5; i++) {
-                        posts.push({
-                            title: faker.lorem.word(5),
-                            content: faker.lorem.word(70),
-                            genre: faker.random.arrayElement(["Narrative",
-                                "NonFiction",
-                                "Poetry"]),
-                            typology: faker.random.arrayElement(['Descriptive', 'Narrative', 'Expository', 'Argumentative', 'Literature']),
-                            cover: faker.image.imageUrl(),
-                            creatorID: user._id,
-                        })
-                    }
-                    Post.create(posts)
-                        .then(createdPosts => {
-                            allPost = createdPosts
-                            createdPosts.forEach(post => {
-                                User.findByIdAndUpdate(post.creatorID, { $push: { userPosts: post._id } }, { new: true })
-                                    .then(() => console.log("YEAH BITCH! :)"))
-
-                                    .catch(err => console.log(err))
-                            })
-                        })
-                        .then(() => console.log("succesfullyCreated!"))
-                        .catch((err) => console.log(err))
-                })
-            })
-
-            .then(() => {
-
-                console.log("FINISHHH!!!! : AQUI VA LA LOGICA AHORA DE LOS COMMENTS :)")
-
-            })
-            .catch(err => console.log(`Ha ocurrido un error: ${err}`))
+        let users = []
+        for (let i = 1; i <= 20; i++) {
+            let user = {
+                username: faker.name.findName(),
+                email: faker.internet.email(),
+                password: bcrypt.hashSync('123', salt),
+                favoriteGenre: faker.random.arrayElement(["Narrative",
+                    "NonFiction",
+                    "Poetry"]),
+                profilePic: faker.image.imageUrl(),
+                userPosts: allPost[randomNum(allPost.length)]
+            }
+            users.push(user)
+        };
+        return User.create(users)
     })
+    .then(allUsers => {
+        let promises = []
+        allU = allUsers
+        allUsers.forEach(user => {
+            let posts = []
+            for (let i = 1; i <= 5; i++) {
+                posts.push({
+                    title: faker.lorem.words(5),
+                    content: faker.lorem.words(70),
+                    genre: faker.random.arrayElement(["Narrative",
+                        "NonFiction",
+                        "Poetry"]),
+                    typology: faker.random.arrayElement(['Descriptive', 'Narrative', 'Expository', 'Argumentative', 'Literature']),
+                    cover: faker.image.imageUrl(),
+                    creatorID: user._id,
+                })
+            }
+            promises.push(Post.create(posts)
+                .then(createdPosts => {
+                    allPost.push(...createdPosts)
+                    return createdPosts
+                })
+                .catch(err => err))
+        })
+        return Promise.all(promises)
+    })
+    .then(() => {
+        let promises = []
+        allPost.forEach(post => {
+            promises.push(User.findByIdAndUpdate(post.creatorID, { $push: { userPosts: post._id } }, { new: true }))
+        })
+        return Promise.all(promises)
+    })
+    .then(() => {
+        let comments = []
+        for (let i = 1; i <= 100; i++) {
+            let comment = {
+                creator: allU[randomNum(allU.length)],
+                content: faker.lorem.words(15),
+                post: allPost[randomNum(allPost.length)],
+                rating: 1,
+            }
+            comments.push(comment)
+        };
+        return Comment.create(comments)
+    })
+    .then(commentsCreated => {
+        commentsCreated.forEach((comment) => {
+            const updateUser = User.findByIdAndUpdate(comment.creator, {
+                $push: {
+                    myReviews: comment._id
+                },
+            }, { new: true })
+            const updatePost = Post.findByIdAndUpdate(comment.post, {
+                $push: {
+                    comments: comment._id
+                }
+            }, { new: true })
+            return Promise.all([updateUser, updatePost])
+        })
+    })
+    .then(() => console.log("Éxito!"))
     .catch(err => console.log(`Ha ocurrido un error: ${err}`))
