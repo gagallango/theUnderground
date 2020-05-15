@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AuthService from '../service/auth.service'
 import Home from './Home/Home'
 import SignUp from './Signup/Signup'
 import Login from './Login/Login'
 import Profile from './Profile/Profile'
+import UserPost from './Profile/UserPost/UserPost'
+import Navbar from './ui/Navbar/Navbar'
+import AllUserPosts from './Profile/AllUserPosts/AllUserPosts';
 
 class App extends Component {
 
@@ -14,10 +17,10 @@ class App extends Component {
     super()
     this.state = { loggedInUser: null }
     this.authService = new AuthService()
+    this.fetchUser()
   }
 
-
-  setTheUser = userObj => this.setState({ loggedInUser: userObj }, () => this.state)
+  setTheUser = userObj => this.setState({ loggedInUser: userObj })
 
   fetchUser = () => {
     if (this.state.loggedInUser === null) {
@@ -28,18 +31,24 @@ class App extends Component {
   }
 
   render() {
-
-    this.fetchUser()
     return (
-      <>
+      !this.state.loggedInUser ?
         <Switch>
           <Route exact path='/' render={() => <Home />} />
           <Route path='/signup' render={props => <SignUp {...props} setTheUser={this.setTheUser} />} />
           <Route path='/login' render={props => <Login {...props} setTheUser={this.setTheUser} />} />
-          <Route path="/profile" render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
         </Switch>
-      </>
-    );
+        :
+        <>
+          <Navbar loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} />
+          <Switch>
+            <Route path='/profile' render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+            <Route path='/post/:id' render={props => <UserPost {...props} />} />
+            <Route path='/explore' render={props => <AllUserPosts {...props} />} />
+
+          </Switch>
+        </>
+    )
   }
 }
 

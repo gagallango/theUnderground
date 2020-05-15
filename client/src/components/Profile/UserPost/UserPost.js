@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import PostService from '../../../service/post.service'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class UserPost extends Component {
     constructor(props) {
@@ -24,11 +26,17 @@ class UserPost extends Component {
     render() {
         return (
             <Container>
-                <h1>Title: {this.state.title}</h1>
-                <img src={this.state.cover} alt="" />
-                <p>Genre: {this.state.genre}</p>
-                <p>Typology: {this.state.typology}</p>
-                <p>Content: {this.state.content}</p>
+                <Row>
+                    <Col md={4}>
+                        <img className="post-cover" src={this.state.cover} alt="" />
+                        <p>Genre: {this.state.genre}</p>
+                        <p>Typology: {this.state.typology}</p>
+                    </Col>
+                    <Col md={8}>
+                        <h1>{this.state.title}</h1>
+                        <p>{this.state.content}</p>
+                    </Col>
+                </Row>
             </Container>
         )
     }

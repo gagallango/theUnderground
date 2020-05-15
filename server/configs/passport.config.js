@@ -3,8 +3,9 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const flash = require("connect-flash")
-
+const Post = require('../models/post.model')
 const User = require('../models/user.model')
+const Comment = require('../models/comment.model')
 
 module.exports = app => {
 
@@ -17,6 +18,8 @@ module.exports = app => {
     passport.serializeUser((user, next) => next(null, user._id))
     passport.deserializeUser((id, next) => {
         User.findById(id)
+            .populate('myReviews')
+            .populate('userPosts')
             .then(theUser => next(null, theUser))
             .catch(err => next(err))
     })
@@ -27,6 +30,8 @@ module.exports = app => {
 
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
         User.findOne({ username })
+            .populate('myReviews')
+            .populate('userPosts')
             .then(user => {
                 if (!user) {
                     return next(null, false, { message: "Nombre de usuario incorrecto" })

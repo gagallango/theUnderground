@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import AuthService from '../../service/auth.service'
 import Container from 'react-bootstrap/Container'
 import PostService from '../../service/post.service'
-
-// import { Link } from 'react-router-dom'
-
+import UserPost from '../Profile/UserPost/UserPost'
+import Navbar from './../ui/Navbar/Navbar'
+import { Link } from 'react-router-dom'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import ReviewCard from './Review/Review'
 class Profile extends Component {
 
     constructor(props) {
@@ -14,42 +16,48 @@ class Profile extends Component {
             user: props.loggedInUser
         }
     }
-    // getAllPosts = () => {
-    //     this.postService.getPosts()
-    //         .then(response => this.setState({ posts: response.data }))
-    //         .catch(err => console.log(err))
 
-    // }
     displayPosts = () => {
-        //cambiar la p por un componente que recibe props para pintar
-        return this.state.user.userPosts.map((post, idx) => <p key={idx}>{post.title} <hr /> {post.content}</p>)
-        //return this.state.user.userPosts.map((elm, idx) => <UserPost key={idx} {...post} content={}>{post.title}</UserPost>)
+        return this.state.user.userPosts.map((post, idx) => <Link to={`/post/${post._id}`} key={idx}><ul><li>{post.title}</li></ul></Link >)
+        // return this.state.user.userPosts.map(post => <UserPost key={post.id}{...post} />)
+
     }
 
     displayReviews = () => {
-        return this.state.user.myReviews.map((review, idx) => <p key={idx}>{review.content}</p>)
+        return this.state.user.myReviews.map((review) => <ReviewCard key={review._id}{...review} />)
     }
 
 
     render() {
         if (this.state.user) {
-            const { username, email, favoriteGenre, profilePic } = this.state.user
+            const { username, favoriteGenre, profilePic } = this.state.user
             return (
                 <>
                     <Container as="section" className="profile-section">
-                        <div><h1>Hello yo mothafucker, {username}</h1>
-                            <div>
-                                <h3>Contact info:</h3>
-                                <img src={profilePic} alt="" />
-                                <p>Favorite genre: {favoriteGenre}</p>
+                        <Row>
+                            <Col md={2}>
+                                <div><h3>{username}</h3>
+                                    <div>
+                                        <h3>Contact info:</h3>
+                                        <img src={profilePic} alt="" />
+                                        <p>Favorite genre: {favoriteGenre}</p>
 
-
-                            </div>
-                            <h3>What I wrote:</h3>
-                            {this.displayPosts()}
-                            <h3>What I reviewed:</h3>
-                            {this.displayReviews()}
-                        </div>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col md={6}>
+                                <div className="wrote-by-user">
+                                    <h3>What I wrote:</h3>
+                                    <h2>{this.displayPosts()}</h2>
+                                </div>
+                            </Col>
+                            <Col md={4}>
+                                <div className="review-by-user">
+                                    <h3>Reviews I've done:</h3>
+                                    {this.displayReviews()}
+                                </div>
+                            </Col>
+                        </Row>
                     </Container>
                 </>
             )

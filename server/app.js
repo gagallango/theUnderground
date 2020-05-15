@@ -17,7 +17,9 @@ require('./configs/passport.config')(app)
 require('./configs/views.configs')(app)
 require('./configs/locals.config')(app)
 
-// Base URLS
 app.use('/api', require('./routes/index.routes'))
+app.use((req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+})
 
 module.exports = app

@@ -31,8 +31,9 @@ Promise.all([deleteUsers, deletePost, deleteComment])
                 favoriteGenre: faker.random.arrayElement(["Narrative",
                     "NonFiction",
                     "Poetry"]),
-                profilePic: faker.image.imageUrl(),
-                userPosts: allPost[randomNum(allPost.length)]
+                myReviews: [],
+                profilePic: faker.internet.avatar(),
+                userPosts: []
             }
             users.push(user)
         };
@@ -46,7 +47,7 @@ Promise.all([deleteUsers, deletePost, deleteComment])
             for (let i = 1; i <= 5; i++) {
                 posts.push({
                     title: faker.lorem.words(5),
-                    content: faker.lorem.words(70),
+                    content: faker.lorem.sentences(),
                     genre: faker.random.arrayElement(["Narrative",
                         "NonFiction",
                         "Poetry"]),
@@ -76,15 +77,16 @@ Promise.all([deleteUsers, deletePost, deleteComment])
         for (let i = 1; i <= 100; i++) {
             let comment = {
                 creator: allU[randomNum(allU.length)],
-                content: faker.lorem.words(15),
+                content: faker.lorem.sentences(),
                 post: allPost[randomNum(allPost.length)],
-                rating: 1,
+                rating: randomNum(5),
             }
             comments.push(comment)
         };
         return Comment.create(comments)
     })
     .then(commentsCreated => {
+        console.log(commentsCreated)
         commentsCreated.forEach((comment) => {
             const updateUser = User.findByIdAndUpdate(comment.creator, {
                 $push: {
@@ -99,5 +101,5 @@ Promise.all([deleteUsers, deletePost, deleteComment])
             return Promise.all([updateUser, updatePost])
         })
     })
-    .then(() => console.log("Éxito!"))
+    .then((finished) => console.log(finished))
     .catch(err => console.log(`Ha ocurrido un error: ${err}`))

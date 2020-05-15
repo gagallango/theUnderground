@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 import './Home.css'
 
@@ -7,16 +6,25 @@ class Home extends Component {
 
     render() {
         return (
-
-            <Container className="underground">
-                <div>
-                    <h1>THE <br></br><span className="underground-title">UNDERGROUND</span></h1>
+            <>
+                <div id="main-wrapper">
+                    <aside>
+                        <h1 className="the">THE</h1>
+                    </aside>
+                    <main>
+                        <h1 className="underground">UNDERGROUND</h1>
+                        <div className="sign-log">
+                            <Link to='/signup'>Join</Link>
+                            <Link to='/login'>Login</Link>
+                        </div>
+                    </main>
                 </div>
-                <div>
-                    <Link to='/signup'>Join</Link>
-                    <Link to='/login'>Login</Link>
-                </div>
-            </Container >
+                <section>
+                    <div className="scroll text">
+                        <div>a writting and content creator platform - a writting and content creator platform</div>
+                    </div>
+                </section>
+            </>
         )
     }
 }

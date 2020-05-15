@@ -25,8 +25,7 @@ class Navigation extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav>
-                        <Nav.Link as="div"><Link to="/">Home</Link></Nav.Link>
-                        <Nav.Link as="div"><Link to="/allPosts">Posts</Link></Nav.Link>
+                        <Nav.Link as="div"><Link to="/main">Home</Link></Nav.Link>
 
                         {
                             !this.props.loggedInUser ?
@@ -37,8 +36,9 @@ class Navigation extends Component {
 
                                 :
                                 <>
+                                    <Nav.Link as="div"><Link to="/explore">Explore</Link></Nav.Link>
                                     <Nav.Link as="div"><Link to="/profile">Profile</Link></Nav.Link>
-                                    <Nav.Link as="div" onClick={this.logout}>Logout</Nav.Link>
+                                    <Nav.Link as="div" onClick={this.logout}><Link to="/">Logout</Link></Nav.Link>
                                 </>
 
                         }

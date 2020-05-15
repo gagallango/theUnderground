@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import AuthService from '../../service/auth.service'
-import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import './Login.css'
 
 class Login extends Component {
     constructor(props) {
@@ -38,19 +38,21 @@ class Login extends Component {
     }
     render() {
         return (
-            <Container>
-                <Row>
+            <div className="container">
+                <div className="col-xs-6">
+                    <img className="whitepen" src="/namename.png" />
+                </div>
+                <div className="juju">
                     <Col md={{ span: 4, offset: 4 }}>
                         <h3>Login</h3>
-                        <hr></hr>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="name">
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                                <Form.Label className="inputname">Username</Form.Label>
+                                <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
                             </Form.Group>
                             <Form.Group controlId="pwd">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+                                <Form.Label className="inputname">Password</Form.Label>
+                                <Form.Control className="inputform" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
                             </Form.Group>
                             <p
                                 className='error-message'
@@ -59,8 +61,8 @@ class Login extends Component {
                             <Button variant="dark" type="submit">Login</Button>
                         </Form>
                     </Col>
-                </Row>
-            </Container>
+                </div>
+            </div>
         )
     }
 }

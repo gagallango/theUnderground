@@ -6,7 +6,7 @@ const commentSchema = new Schema({
     content: String,
     rating: {
         type: Number,
-        enum: [1, 2, 3, 4, 5]
+        enum: [0, 1, 2, 3, 4, 5]
     },
     creator: { type: Schema.Types.ObjectId, ref: 'User' },
     post: { type: Schema.Types.ObjectId, ref: 'Post' },

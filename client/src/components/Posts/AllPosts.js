@@ -27,8 +27,13 @@ class AllPosts extends Component {
         return (
             <Container>
                 <h1>All posts from users</h1>
-                <h3>Titles</h3>
-                {this.state.posts.map(elm => <p key={elm._id}> {elm.title}</p>)}
+                <div>
+                    <h3>Titles</h3>
+                    {this.state.posts.map(elm => {
+                        <p key={elm._id}>Title: {elm.title}</p>
+                    })}
+                </div>
+
             </Container>
         )
     }

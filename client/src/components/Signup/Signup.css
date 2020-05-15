@@ -1,0 +1,54 @@
+body {
+    background: #eee;
+}
+
+form {
+    display: inline-block;
+}
+
+.container {
+    margin: 0 auto;
+    background: #333;
+    color: #fff;
+    padding: 0% 15%;
+}
+
+.inputform {
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid #888;
+}
+
+.inputname {
+    padding-right: 20px;
+    min-width: 135px;
+    font-size: 10px;
+    font-weight: 100;
+    text-transform: uppercase;
+}
+
+.genres {
+    border: none;
+    background: transparent;
+}
+
+h1 {
+    font-size: 2.3em;
+}
+
+.already {
+    transform: translate(0%, 60%);
+} 
+
+.link-login {
+    color: #fff;
+}
+
+.whitepen {
+    width: 600px;
+    transform: translate(400px, -100px);
+}
+
+.juju {
+    transform: translate(10px, -500px);
+}
