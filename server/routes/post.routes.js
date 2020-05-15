@@ -3,10 +3,12 @@ const router = express.Router()
 const User = require('./../models/user.model')
 const Post = require('./../models/post.model')
 
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() : res.json('/')
+
 
 
 //posts de un user???? 
-router.get('/allUserPosts/:id', (req, res, next) => {
+router.get('/allUserPosts/:id', checkLoggedIn, (req, res, next) => {
     User.find(id)
         .populate('userPosts')
         .then(data => res.json(data))
@@ -15,7 +17,7 @@ router.get('/allUserPosts/:id', (req, res, next) => {
 
 
 //todos los posts FUNCIONA
-router.get('/allPosts', (req, res, next) => {
+router.get('/allPosts', checkLoggedIn, (req, res, next) => {
     Post.find()
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
@@ -23,7 +25,7 @@ router.get('/allPosts', (req, res, next) => {
 
 
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', checkLoggedIn, (req, res, next) => {
     Post.findById(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
@@ -38,14 +40,14 @@ router.post('/:id', (req, res, next) => {
 
 
 //edicion de post FUNCIONA EL GETTTT
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', checkLoggedIn, (req, res, next) => {
 
     Post.findById(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })
 
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', checkLoggedIn, (req, res, next) => {
     const { title, content, genre, tags, typology, cover } = req.body
 
     Post.findByIdAndUpdate(req.params.id, { title, content, genre, tags, typology, cover }, { new: true })
@@ -53,7 +55,7 @@ router.post('/:id/edit', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 //eliminar post
-router.post('/:id/delete', (req, res, next) => {
+router.post('/:id/delete', checkLoggedIn, (req, res, next) => {
     Post.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))

@@ -38,12 +38,12 @@ class Login extends Component {
     }
     render() {
         return (
-            <div className="container">
-                <div className="col-xs-6">
+            <div className="container-sign">
+                <div>
                     <img className="whitepen" src="/namename.png" />
                 </div>
                 <div className="juju">
-                    <Col md={{ span: 4, offset: 4 }}>
+                    <div>
                         <h3>Login</h3>
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Group controlId="name">
@@ -60,7 +60,7 @@ class Login extends Component {
                             >{this.state.errorMessage}</p>
                             <Button variant="dark" type="submit">Login</Button>
                         </Form>
-                    </Col>
+                    </div>
                 </div>
             </div>
         )

@@ -56,9 +56,9 @@ class Signup extends Component {
     render() {
         return (
             <>
-                <div className="container">
-                    <div className="row top-xs">
-                        <div className="col-xs-6">
+                <div className="container-sign">
+                    <div>
+                        <div>
                             <img className="whitepen" src="/namename.png" />
                         </div>
                         <div className="juju">
@@ -69,7 +69,7 @@ class Signup extends Component {
 
                             <div className="row-sign">
                                 <div className="form-total">
-                                    <Form onSubmit={this.handleSubmit}>
+                                    <Form onSubmit={this.handleSubmit} className="join-form">
                                         <Form.Group controlId="name">
                                             <Form.Label className="inputname">Username</Form.Label>
                                             <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />

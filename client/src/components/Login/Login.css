@@ -1,12 +1,9 @@
-body {
-    background: #eee;
-}
 
 form {
     display: inline-block;
 }
 
-.container {
+.container-sign {
     margin: 0 auto;
     background: #333;
     color: #fff;

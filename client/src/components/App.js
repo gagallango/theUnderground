@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import AuthService from '../service/auth.service'
 import Home from './Home/Home'
@@ -39,15 +39,16 @@ class App extends Component {
           <Route path='/login' render={props => <Login {...props} setTheUser={this.setTheUser} />} />
         </Switch>
         :
-        <>
+        <div className="general-wrapper">
           <Navbar loggedInUser={this.state.loggedInUser} setTheUser={this.setTheUser} />
-          <Switch>
-            <Route path='/profile' render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
-            <Route path='/post/:id' render={props => <UserPost {...props} />} />
-            <Route path='/explore' render={props => <AllUserPosts {...props} />} />
-
-          </Switch>
-        </>
+          <div className="main-container">
+            <Switch>
+              <Route path='/profile' render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
+              <Route path='/post/:id' render={props => <UserPost {...props} />} />
+              <Route path='/explore' render={props => <AllUserPosts {...props} />} />
+            </Switch>
+          </div>
+        </div>
     )
   }
 }

@@ -6,7 +6,7 @@ const ReviewCard = review => {
     return (
         <>
             <Col md={{ span: 8, offset: 1 }}>
-                <h6 className="user-info">{review.creator}</h6>
+                <h6 className="user-info">{review.creator.username}</h6>
             </Col>
             <Col md={{ span: 8, offset: 1 }} className="comment">
                 {review.content}

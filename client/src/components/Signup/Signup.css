@@ -1,12 +1,9 @@
-body {
-    background: #eee;
-}
 
 form {
     display: inline-block;
 }
 
-.container {
+.container-sign {
     margin: 0 auto;
     background: #333;
     color: #fff;
@@ -26,7 +23,9 @@ form {
     font-weight: 100;
     text-transform: uppercase;
 }
-
+.join-form{
+    width:60%;
+}
 .genres {
     border: none;
     background: transparent;
@@ -49,6 +48,3 @@ h1 {
     transform: translate(400px, -100px);
 }
 
-.juju {
-    transform: translate(10px, -500px);
-}
