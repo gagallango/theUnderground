@@ -17,8 +17,9 @@ require('./configs/passport.config')(app)
 require('./configs/views.configs')(app)
 require('./configs/locals.config')(app)
 
-app.use('/api', require('./routes/index.routes'))
+app.get('/favicon.ico', (req, res) => res.status(204))
 
+app.use('/api', require('./routes/index.routes'))
 app.use((req, res) => {
     res.sendFile(__dirname + "/public/index.html");
 })
