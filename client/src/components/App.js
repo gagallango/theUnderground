@@ -10,6 +10,7 @@ import Profile from './Profile/Profile'
 import UserPost from './Profile/UserPost/UserPost'
 import Navbar from './ui/Navbar/Navbar'
 import AllUserPosts from './Profile/AllUserPosts/AllUserPosts';
+import NewPost from './Profile/NewPost/NewPost';
 
 class App extends Component {
 
@@ -44,8 +45,9 @@ class App extends Component {
           <div className="main-container">
             <Switch>
               <Route path='/profile' render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
-              <Route path='/post/:id' render={props => <UserPost {...props} />} />
+              <Route path='/post/detail/:id' render={props => <UserPost {...props} />} />
               <Route path='/explore' render={props => <AllUserPosts {...props} />} />
+              <Route path='/post/new' exact render={() => <NewPost />} />
             </Switch>
           </div>
         </div>

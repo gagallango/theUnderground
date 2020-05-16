@@ -36,6 +36,7 @@ class Navigation extends Component {
                                     <Link to="/main">Home</Link>
                                     <Link to="/explore">Explore</Link>
                                     <Link to="/profile">Profile</Link>
+                                    <Link to="/post/new">New Post</Link>
                                     <Link to="/" as="div" onClick={this.logout}>Logout</Link>
                                 </>
 

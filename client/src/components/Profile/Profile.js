@@ -20,7 +20,7 @@ class Profile extends Component {
     }
 
     displayPosts = () => {
-        return this.state.user.userPosts.map((post, idx) => <Link to={`/post/${post._id}`} key={idx}><ul><li>{post.title}</li></ul></Link >)
+        return this.state.user.userPosts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}><ul><li>{post.title}</li></ul></Link >)
         // return this.state.user.userPosts.map(post => <UserPost key={post.id}{...post} />)
 
     }
