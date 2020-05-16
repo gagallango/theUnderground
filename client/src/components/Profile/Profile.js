@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import PostService from '../../service/post.service'
-import UserPost from '../Profile/UserPost/UserPost'
-import Navbar from './../ui/Navbar/Navbar'
+
 import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -15,12 +14,13 @@ class Profile extends Component {
         super(props)
         this.postService = new PostService()
         this.state = {
-            user: props.loggedInUser
+            user: props.loggedInUser,
+            posts: []
         }
     }
 
     displayPosts = () => {
-        return this.state.user.userPosts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}><ul><li>{post.title}</li></ul></Link >)
+        return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}>{post.title}</Link >)
         // return this.state.user.userPosts.map(post => <UserPost key={post.id}{...post} />)
 
     }
@@ -29,8 +29,17 @@ class Profile extends Component {
     //     return this.state.user.myReviews.splice(0, 3).map((review) => <ReviewCard key={review._id} {...review} />)
     // }
 
+    componentDidMount = () => {
+        this.postService.getAllUserPosts(this.state.user._id)
+            .then(response => {
+                this.setState({ posts: response.data.posts })
+            })
+            .catch(err => console.log(err))
+    }
+
 
     render() {
+        console.log(this.state.user.userPosts.length)
         if (this.state.user) {
             const { username, favoriteGenre, profilePic } = this.state.user
             return (

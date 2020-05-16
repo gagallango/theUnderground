@@ -1,20 +1,9 @@
 import React, { Component } from 'react'
 import AuthService from './../../service/auth.service'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import './Signup.css'
-// import Background from '../../../public/whitepen.png'
-
-// var sectionStyle = {
-//     width: "100%",
-//     height: "400px",
-//     backgroundImage: `url(${Background})`
-// }
-
 
 class Signup extends Component {
 
@@ -59,7 +48,7 @@ class Signup extends Component {
                 <div className="container-sign">
                     <div>
                         <div>
-                            <img className="whitepen" src="/namename.png" />
+                            <img className="whitepen" src="/namename.png" alt="" />
                         </div>
                         <div className="juju">
                             <div class="asidesign">

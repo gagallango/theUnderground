@@ -4,11 +4,14 @@ import PostService from '../../../service/post.service'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import { Link } from 'react-router-dom'
+import Review from '../Review/Review'
 
 class UserPost extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            postInfo: {}
+        }
         this.postService = new PostService()
     }
 
@@ -38,9 +41,12 @@ class UserPost extends Component {
                     </Col>
                     <Col md={6}>
                         <img style={{ width: '200px' }} src={this.state.cover} alt={this.state.title} />
+                        {this.state.creatorID ? <p>{this.state.creatorID.username}</p> : null}
+
                     </Col>
                 </Row>
-                <Link to="/explore" className="btn btn-dark">Go back</Link>
+
+                <Link to="/explore" >Go back</Link>
             </Container>
 
         )

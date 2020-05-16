@@ -25,7 +25,7 @@ const postSchema = new Schema({
         type: String
     },
     creatorID: { type: Schema.Types.ObjectId, ref: 'User' },
-    comments: { type: Schema.Types.ObjectId, ref: 'Comment' },
+    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 }, {
     timestamps: true
 })

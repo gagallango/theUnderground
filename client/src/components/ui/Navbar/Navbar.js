@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from 'react-bootstrap/Nav'
 import './navbar.css'
 
 import AuthService from './../../../service/auth.service'

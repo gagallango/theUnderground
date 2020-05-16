@@ -47,7 +47,7 @@ Promise.all([deleteUsers, deletePost, deleteComment])
             for (let i = 1; i <= 5; i++) {
                 posts.push({
                     title: faker.lorem.words(5),
-                    content: faker.lorem.sentences(),
+                    content: faker.lorem.paragraphs(paragraph_count = 3, supplemental = false),
                     genre: faker.random.arrayElement(["Narrative",
                         "NonFiction",
                         "Poetry"]),

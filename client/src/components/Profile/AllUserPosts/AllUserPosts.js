@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import PostService from '../../../service/post.service'
 import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import PostCard from '../PostCard/PostCard'
 
@@ -33,7 +32,7 @@ class AllUserPosts extends Component {
                     <h1>All posts from users</h1>
                     {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" style={{ marginBottom: '20px' }}>Crear nueva montaña rusa</Button>}
                     <Row>
-                        {this.state.posts.splice(0, 8).map(post => <PostCard key={post._id} {...post} />)}
+                        {this.state.posts.map(post => <PostCard key={post._id} {...post} />)}
                     </Row>
                 </Container>
             </>
