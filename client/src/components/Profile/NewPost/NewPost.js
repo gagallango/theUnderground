@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PostService from '../../../service/post.service'
+import CoverService from '../../../service/cover.service'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
@@ -22,6 +23,7 @@ class NewPost extends Component {
             redirect: false
         }
         this.newPostService = new PostService()
+        this.coverService = new CoverService()
     }
 
     handleInputChange = e => {
@@ -40,6 +42,20 @@ class NewPost extends Component {
                 if (response.data.create === true) {
                     this.setState({ redirect: true })
                 }
+            })
+            .catch(err => console.log(err))
+    }
+
+    handleFileUpload = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('cover', e.target.files[0])
+        this.coverService.handleUpload(uploadData)
+            .then(response => {
+                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+                this.setState({
+                    ...this.state, cover: response.data.secure_url
+                })
             })
             .catch(err => console.log(err))
     }
@@ -92,7 +108,7 @@ class NewPost extends Component {
                         </Form.Group>
                         <Form.Group controlId="cover">
                             <Form.Label>Choose your cover</Form.Label>
-                            <Form.Control name="cover" type="file" />
+                            <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
                         <Button variant="primary" type="submit" >Publish</Button>
                     </Form>

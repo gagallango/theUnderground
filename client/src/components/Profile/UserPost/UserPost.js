@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
+import Button from 'react-bootstrap/Button'
 import PostService from '../../../service/post.service'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+
+
 import { Link } from 'react-router-dom'
 import './UserPost.css'
 
@@ -21,6 +21,13 @@ class UserPost extends Component {
             .then(response => this.setState(response.data))
             .catch(err => console.log(err))
     }
+
+    handleDelete = () => {
+        this.postService.deletePost()
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
+    }
+
 
 
     componentDidMount = () => {
@@ -47,6 +54,7 @@ class UserPost extends Component {
                             </div>
                             {/* <Link to="/explore" >Go back</Link> */}
                             <Link to="/post/edit" >Edit</Link>
+                            <Button onClick={this.handleDelete()}>Delete</Button>
                         </div>
                     </div>
                 </div>

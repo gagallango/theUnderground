@@ -9,4 +9,5 @@ export default class posts {
     getUserPost = id => this.service.get(`/post/detail/${id}`)
     getAllUserPosts = id => this.service.get(`/post/allUserPosts/${id}`)
     createPost = post => this.service.post('/post/newPost', post)
+    deletePost = id => this.service.get(`/post/deletePost/${id}`)
 }
