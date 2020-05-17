@@ -1,0 +1,27 @@
+.newpost {
+   padding-left: 100px;
+    margin-left: 25%;
+    margin-top: 10%;
+    padding: 8%;
+    background: #eee;
+    width: 170%;
+    border-radius: 10px;
+    border: 1px solid #c4c4c4;
+}
+
+.form-control {
+    width: 230%;
+    font-size: .8em;
+} 
+
+.title {
+    margin-bottom: 2%;
+    color: #333;
+    font-weight: 100;
+}
+
+.btn-primary {
+       color: #fff;
+    background-color: #C4C4C4;
+    border-color:#C4C4C4; 
+}

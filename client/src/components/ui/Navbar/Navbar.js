@@ -31,11 +31,12 @@ class Navigation extends Component {
 
                                 :
                                 <>
-                                    <Link to="/main">Home</Link>
-                                    <Link to="/explore">Explore</Link>
-                                    <Link to="/profile">Profile</Link>
-                                    <Link to="/post/new">New Post</Link>
-                                    <Link to="/" as="div" onClick={this.logout}>Logout</Link>
+                                    <p className="hi-username">Hi, {this.props.loggedInUser.username}</p>
+                                    <Link className="a-main" to="/explore">Explore</Link>
+                                    <Link className="a-main" to="/profile">Profile</Link>
+                                    <Link className="a-main" to="/post/new">New Post</Link>
+                                    <Link className="logout" to="/" as="div" onClick={this.logout}>Logout</Link>
+
                                 </>
 
                         }

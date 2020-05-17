@@ -1,9 +1,9 @@
 .main-nav{
-    width:250px;
+    width:200px !important; 
     display:flex;
     flex-direction:column;
     height:100vh;
-    background-color:#333;
+    background-color:#7ba6ad;
     color:white; 
    
 } .main-nav a {
@@ -12,7 +12,7 @@
 }
 
 .nav-items{
-    
+    margin-top: 50%;
 }
 
 .nav-items ul{
@@ -26,4 +26,12 @@
     padding:10px;
     font-size:12px;
     color:white;
+}
+
+.logout {
+    font-size: 15px;
+}
+
+.a-main {
+    font-weight: 600;
 }

@@ -15,8 +15,8 @@ aside, main {
 
 aside {
     display: flex;
-    background: #333;
-    color: #eee;
+    background: #7ba6ad;
+    color: #CFEBDF;
     width: 25%;
     min-height: 100vh;
     justify-content: flex-end;
@@ -26,8 +26,8 @@ aside {
 
 main {
     display: flex;
-    background: #eee;
-    color: #333;
+    background: #CFEBDF;
+    color: #7ba6ad;
     min-height: 100vh;
     width: 100%;
     justify-content: flex-start;
@@ -40,11 +40,14 @@ main {
 .sign-log {
     transform: translate(-100px, 40px);
 } a {
-    color: #333;
+    color: #7ba6ad;
     text-decoration: none;
     margin-right: 10px;
     font-size: 1.2em;
     font-weight: 500;
+} a:hover {
+    color: #7ba6ad;
+    text-decoration: none;
 }
 
 .the {
@@ -70,12 +73,12 @@ section .scroll {
 }
 
 section .scroll div {
-    color: #333;
+    color: #7ba6ad;
     font-size:1em ;
     white-space: nowrap;
     font-weight: 900;
     text-transform: uppercase;
-    animation: animate 10s linear infinite;
+    /* animation: animate 10s linear infinite; */
 }
 
 

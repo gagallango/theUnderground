@@ -9,10 +9,10 @@ class Home extends Component {
             <>
                 <div id="main-wrapper">
                     <aside>
-                        <h1 className="the">THE</h1>
+                        <h1 className="the" style={{ marginRight: '10px' }}>THE</h1>
                     </aside>
                     <main>
-                        <h1 className="underground">UNDERGROUND</h1>
+                        <h1 className="underground" style={{ marginLeft: '10px' }}>UNDERGROUND</h1>
                         <div className="sign-log">
                             <Link to='/signup'>Join</Link>
                             <Link to='/login'>Login</Link>
@@ -21,7 +21,7 @@ class Home extends Component {
                 </div>
                 <section>
                     <div className="scroll text">
-                        <div>a writting and content creator platform - a writting and content creator platform</div>
+                        <div>a writting and content creator platform - a writting and content creator platform - a writting and content creator platform - a writting and content creator platform</div>
                     </div>
                 </section>
             </>

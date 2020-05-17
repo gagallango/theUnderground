@@ -28,13 +28,13 @@ class AllUserPosts extends Component {
     render() {
         return (
             <>
-                <Container>
+                <div className="alluserposts">
                     <h1>All posts from users</h1>
                     {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" style={{ marginBottom: '20px' }}>Crear nueva montaña rusa</Button>}
                     <Row>
                         {this.state.posts.map(post => <PostCard key={post._id} {...post} />)}
                     </Row>
-                </Container>
+                </div>
             </>
         )
     }

@@ -5,9 +5,11 @@ form {
 
 .container-sign {
     margin: 0 auto;
-    background: #333;
-    color: #fff;
-    padding: 0% 15%;
+    background: #7ba6ad;
+    color: #CFEBDF;
+    padding: 0 15%;
+    width: 100%;
+    height: 700px;
 }
 
 .inputform {
@@ -24,7 +26,7 @@ form {
     text-transform: uppercase;
 }
 .join-form{
-    width:60%;
+       width: 10%;
 }
 .genres {
     border: none;
@@ -43,8 +45,7 @@ h1 {
     color: #fff;
 }
 
-.whitepen {
-    width: 600px;
-    transform: translate(400px, -100px);
+.juju {
+    transform: translate(10px, 45px);
 }
 

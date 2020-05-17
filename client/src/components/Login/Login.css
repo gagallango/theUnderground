@@ -5,12 +5,8 @@ form {
 
 .container-sign {
     margin: 0 auto;
-    background: #333;
-    color: #fff;
+    background: #7ba6ad;
+    color: #CFEBDF;
     padding: 0% 15%;
 }
 
-.whitepen {
-    width: 600px;
-    transform: translate(400px, -100px);
-}
