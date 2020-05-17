@@ -17,7 +17,7 @@ class Profile extends Component {
     }
 
     displayPosts = () => {
-        return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}><li>{post.title}</li></Link >)
+        return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}><li>{post.title} </li></Link >)
         // return this.state.user.userPosts.map(post => <UserPost key={post.id}{...post} />)
 
     }
@@ -36,7 +36,6 @@ class Profile extends Component {
 
 
     render() {
-        console.log(this.state.user.userPosts.length)
         if (this.state.user) {
             const { username, favoriteGenre, profilePic } = this.state.user
             return (

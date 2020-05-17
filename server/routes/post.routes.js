@@ -52,8 +52,7 @@ router.get('/detail/:id', (req, res, next) => {
 
 //EDIT POST
 router.post('/editPost/:id', (req, res, next) => {
-    const { title, content, genre, tags, typology, cover } = req.body
-    Post.findByIdAndUpdate(req.params.id, { title, content, genre, tags, typology, cover }, { new: true })
+    Post.findByIdAndUpdate(req.params.id, req.body)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })

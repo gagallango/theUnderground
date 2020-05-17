@@ -75,7 +75,7 @@ class NewPost extends Component {
         return (
             <>
                 <Container className="newpost">
-                    <h1 className="title">Write your thougths down here</h1>
+                    <h1 className="title">Write your thoughts down here</h1>
                     <Form onSubmit={this.handleSubmit}>
                         <Form.Group as={Row} controlId="title">
                             <Col sm={10}>

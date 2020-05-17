@@ -55,7 +55,7 @@ class Login extends Component {
                                 className='error-message'
                                 style={{ display: this.state.errorMessage ? 'block' : 'none' }}
                             >{this.state.errorMessage}</p>
-                            <Button variant="dark" type="submit">Login</Button>
+                            <Button type="submit">Login</Button>
                         </Form>
                     </div>
                 </div>

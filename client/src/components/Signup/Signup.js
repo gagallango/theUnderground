@@ -49,7 +49,7 @@ class Signup extends Component {
                     <div className="juju">
                         <div class="asidesign">
                             <h1>JOIN <br></br> THE HOOD</h1>
-                            <p><small>Already have an account? <Link className="link-login" to="/login">Login</Link></small></p>
+                            <p><small>Already have an account? <Link style={{ fontWeight: '800', color: '#7ba6ad' }} to="/login">Login</Link></small></p>
                         </div>
 
                         <div className="row-sign">
@@ -81,7 +81,7 @@ class Signup extends Component {
                                         className='error-message'
                                         style={{ display: this.state.errorMessage ? 'block' : 'none' }}
                                     >{this.state.errorMessage}</p>
-                                    <Button variant="dark" type="submit">Join</Button>
+                                    <Button type="submit">Join</Button>
                                 </Form>
                             </div>
                         </div>

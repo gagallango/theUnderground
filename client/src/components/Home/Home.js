@@ -12,7 +12,7 @@ class Home extends Component {
                         <h1 className="the" style={{ marginRight: '10px' }}>THE</h1>
                     </aside>
                     <main>
-                        <h1 className="underground" style={{ marginLeft: '10px' }}>UNDERGROUND</h1>
+                        <h1 className="underground">UNDERGROUND</h1>
                         <div className="sign-log">
                             <Link to='/signup'>Join</Link>
                             <Link to='/login'>Login</Link>

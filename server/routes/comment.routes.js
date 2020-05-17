@@ -4,7 +4,7 @@ const Comment = require('../models/comment.model')
 
 //NUEVA REVIEW FUNCIONA
 router.post('/new', (req, res, next) => {
-    const { content, rating, creator, post } = req.body
+    const { content, rating } = req.body
     Comment.create(req.body)
         .then(data => res.json(data))
         .catch(err => console.log(err))
