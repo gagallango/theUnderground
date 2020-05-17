@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Button from 'react-bootstrap/Button'
+
 import PostService from '../../../service/post.service'
 
+import Button from 'react-bootstrap/Button'
 
-import { Link } from 'react-router-dom'
 import './UserPost.css'
 
 class UserPost extends Component {
@@ -22,9 +22,11 @@ class UserPost extends Component {
             .catch(err => console.log(err))
     }
 
-    handleDelete = () => {
-        this.postService.deletePost()
-            .then(response => console.log(response))
+    handleDelete = (id) => {
+        this.postService.deletePost(id)
+            .then(() => {
+                this.props.history.push('/explore')
+            })
             .catch(err => console.log(err))
     }
 
@@ -52,9 +54,7 @@ class UserPost extends Component {
                                     <li>{this.state.typology}</li>
                                 </ul>
                             </div>
-                            {/* <Link to="/explore" >Go back</Link> */}
-                            <Link to="/post/edit" >Edit</Link>
-                            <Button onClick={this.handleDelete()}>Delete</Button>
+                            <Button onClick={() => this.handleDelete(this.state._id)}>Delete</Button>
                         </div>
                     </div>
                 </div>

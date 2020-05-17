@@ -58,7 +58,7 @@ router.post('/editPost/:id', (req, res, next) => {
         .catch(err => next(new Error(err)))
 })
 
-//DELETE POST FUNCIONA
+// DELETE POST FUNCIONA
 router.get('/deletePost/:id', (req, res, next) => {
     Post.findByIdAndRemove(req.params.id)
         .then(data => res.json(data))

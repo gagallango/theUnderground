@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
+
 import PostService from '../../../service/post.service'
-import Row from 'react-bootstrap/Row'
-import Button from 'react-bootstrap/Button'
 import PostCard from '../PostCard/PostCard'
+
+import './AllUserPosts.css'
 
 class AllUserPosts extends Component {
 
@@ -30,10 +30,7 @@ class AllUserPosts extends Component {
             <>
                 <div className="alluserposts">
                     <h1>All posts from users</h1>
-                    {this.props.loggedInUser && <Button onClick={() => this.handleModal(true)} variant="dark" style={{ marginBottom: '20px' }}>Crear nueva montaña rusa</Button>}
-                    <Row>
-                        {this.state.posts.map(post => <PostCard key={post._id} {...post} />)}
-                    </Row>
+                    {this.state.posts.map(post => <PostCard key={post._id} {...post} />)}
                 </div>
             </>
         )

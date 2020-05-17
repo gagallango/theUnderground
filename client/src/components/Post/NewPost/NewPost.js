@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
+
 import PostService from '../../../service/post.service'
 import CoverService from '../../../service/cover.service'
+
+
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import { Redirect } from 'react-router-dom'
+
 import './NewPost.css'
 
 

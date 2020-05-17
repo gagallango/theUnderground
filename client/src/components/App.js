@@ -7,10 +7,10 @@ import Home from './Home/Home'
 import SignUp from './Signup/Signup'
 import Login from './Login/Login'
 import Profile from './Profile/Profile'
-import UserPost from './Profile/UserPost/UserPost'
+import UserPost from './Post/UserPost/UserPost'
 import Navbar from './ui/Navbar/Navbar'
-import AllUserPosts from './Profile/AllUserPosts/AllUserPosts';
-import NewPost from './Profile/NewPost/NewPost';
+import AllUserPosts from './Post/AllUserPosts/AllUserPosts';
+import NewPost from './Post/NewPost/NewPost';
 
 class App extends Component {
 
@@ -48,6 +48,7 @@ class App extends Component {
               <Route path='/post/detail/:id' render={props => <UserPost {...props} />} />
               <Route path='/explore' render={props => <AllUserPosts {...props} />} />
               <Route path='/post/new' exact render={() => <NewPost user={this.state.loggedInUser} />} />
+              {/* <Route path='/post/detail/:id/edit' exact render={() => <NewPost user={this.state.loggedInUser} />} /> */}
             </Switch>
           </div>
         </div>
