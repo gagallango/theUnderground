@@ -8,7 +8,7 @@ export default class services {
         })
     }
 
-    signup = ({ username, email, password, favoriteGenre }) => this.service.post('/user/signup', { username, email, password, favoriteGenre })
+    signup = ({ username, email, password, favoriteGenre, profilePic }) => this.service.post('/user/signup', { username, email, password, favoriteGenre, profilePic })
     login = ({ username, password }) => this.service.post('/user/login', { username, password })
     logout = () => this.service.post('/user/logout')
     isLoggedIn = () => this.service.get('/user/loggedin')

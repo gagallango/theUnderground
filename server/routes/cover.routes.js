@@ -13,4 +13,17 @@ router.post('/upload', uploader.single("cover"), (req, res, next) => {
     res.json({ secure_url: req.file.secure_url });
 })
 
+router.post('/uploadProfilePic', uploader.single("profilePic"), (req, res, next) => {
+
+    if (!req.file) {
+        next(new Error('No file uploaded!'));
+        return;
+    }
+
+    res.json({ secure_url: req.file.secure_url });
+})
+
+
+
+
 module.exports = router;

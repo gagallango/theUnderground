@@ -46,6 +46,14 @@ router.get('/allPosts', (req, res, next) => {
 router.get('/detail/:id', (req, res, next) => {
     Post.findById(req.params.id)
         .populate('creatorID')
+        .populate([{
+            path: 'comments',
+            model: 'Comment',
+            populate: {
+                path: 'creator',
+                model: 'User'
+            }
+        }])
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })

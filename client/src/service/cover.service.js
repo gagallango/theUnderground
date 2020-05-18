@@ -6,5 +6,6 @@ export default class posts {
     }
 
     handleUpload = theFile => this.service.post('/files/upload/', theFile)
+    handleUploadProfilePic = theFile => this.service.post('/files/uploadProfilePic/', theFile)
 
 }

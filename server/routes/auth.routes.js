@@ -10,9 +10,8 @@ const bcryptSalt = 10
 // User signup
 router.post('/signup', (req, res, next) => {
 
+    const { username, email, password, favoriteGenre, profilePic } = req.body
     console.log(req.body)
-
-    const { username, email, password, favoriteGenre } = req.body
     if (!username || !password) {
         res.status(400).json({ message: 'Provide username and password' });
         return;
@@ -37,7 +36,7 @@ router.post('/signup', (req, res, next) => {
         const hashPass = bcrypt.hashSync(password, salt);
 
         const aNewUser = new User({
-            username, email, password: hashPass, favoriteGenre
+            username, email, password: hashPass, favoriteGenre, profilePic
         });
 
         aNewUser.save(err => {
@@ -60,7 +59,7 @@ router.post('/signup', (req, res, next) => {
 
 
 router.post('/login', (req, res, next) => {
-    console.log("ENTRA EN LA RUTA")
+
     passport.authenticate('local', (err, theUser, failureDetails) => {
         if (err) {
             res.status(500).json({ message: 'Something went wrong authenticating user' });

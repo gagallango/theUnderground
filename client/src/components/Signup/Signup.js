@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import './Signup.css'
+import CoverService from '../../service/cover.service'
 
 class Signup extends Component {
 
@@ -15,10 +16,12 @@ class Signup extends Component {
                 email: '',
                 password: '',
                 favoriteGenre: '',
+                profilePic: ''
             },
             errorMessage: ''
         }
         this.authService = new AuthService()
+        this.profilePicService = new CoverService()
     }
 
 
@@ -27,7 +30,6 @@ class Signup extends Component {
         const { name, value } = e.target
 
         loginInfoCopy = { ...loginInfoCopy, [name]: value }
-        console.log(loginInfoCopy)
         this.setState({ loginInfo: loginInfoCopy })
     }
 
@@ -37,6 +39,23 @@ class Signup extends Component {
             .then(response => {
                 this.props.setTheUser(response.data)
                 this.props.history.push('/profile')
+            })
+            .catch(err => console.log(err))
+    }
+
+    handleFileUpload = e => {
+
+        const uploadData = new FormData()
+        uploadData.append('profilePic', e.target.files[0])
+        this.profilePicService.handleUploadProfilePic(uploadData)
+            .then(response => {
+                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+                let loginInfoCopy = { ...this.state.loginInfo }
+                loginInfoCopy = { ...loginInfoCopy, profilePic: response.data.secure_url }
+                console.log(loginInfoCopy)
+                this.setState({
+                    loginInfo: loginInfoCopy
+                })
             })
             .catch(err => console.log(err))
     }
@@ -76,6 +95,10 @@ class Signup extends Component {
                                                 <option>Poetry</option>
                                             </Form.Control>
                                         </Form.Group>
+                                    </Form.Group>
+                                    <Form.Group controlId="cover">
+                                        <Form.Label>Choose your profile pic</Form.Label>
+                                        <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                                     </Form.Group>
                                     <p
                                         className='error-message'

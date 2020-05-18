@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 import EditPost from '../EditPost/EditPost'
 import Comment from '../../Comments/Comment/Comment'
+import CommentForm from '../../Comments/CommentForm/CommentForm'
 import './UserPost.css'
 import Modal from 'react-bootstrap/Modal'
 
@@ -16,7 +17,8 @@ class UserPost extends Component {
         this.state = {
             // user: props.loggedInUser,
             postInfo: {},
-            showModal: false
+            showModal: false,
+            comments: []
         }
         this.postService = new PostService()
     }
@@ -39,7 +41,8 @@ class UserPost extends Component {
     }
 
     displayComment = () => {
-        return this.state.postInfo.myReviews.map(comment => <Comment key={comment._id} newCommentAdded={() => this.handleNewComment()} {...comment} />)
+        console.log(this.state.comments)
+        return this.state.comments.map(comment => <Comment key={comment._id} {...comment} />)
     }
 
     handleDelete = (id) => {
@@ -93,7 +96,17 @@ class UserPost extends Component {
                             </div>
                             <img style={{ width: '290px', marginTop: '10%', borderRadius: '10px', padding: '2%', background: "#fff" }} src={this.state.cover} alt={this.state.title} />
 
-                            {this.state.postInfo.myReviews && this.displayComment()}
+
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-md-8">
+                            <h6>Comments</h6>
+                            {this.state && this.displayComment()}
+                        </div>
+                        <div className="col-md-4">
+                            <h6>Add your comment here</h6>
+                            <CommentForm newCommentAdded={() => this.handleNewComment()} />
                         </div>
                     </div>
                 </div>
