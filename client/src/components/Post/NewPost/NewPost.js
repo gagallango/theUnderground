@@ -64,10 +64,6 @@ class NewPost extends Component {
             .catch(err => console.log(err))
     }
 
-    // finishAction = () => {
-    //     this.props.hideModalWindow()
-    // }
-
     render() {
         if (this.state.redirect) {
             return (<Redirect to="/profile" />)

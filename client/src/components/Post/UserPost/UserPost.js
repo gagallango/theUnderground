@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import PostService from '../../../service/post.service'
 
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
 
 import EditPost from '../EditPost/EditPost'
 import Comment from '../../Comments/Comment/Comment'
@@ -15,7 +14,6 @@ class UserPost extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // user: props.loggedInUser,
             postInfo: {},
             showModal: false,
             comments: []
@@ -41,7 +39,6 @@ class UserPost extends Component {
     }
 
     displayComment = () => {
-        console.log(this.state.comments)
         return this.state.comments.map(comment => <Comment key={comment._id} {...comment} />)
     }
 
@@ -86,7 +83,6 @@ class UserPost extends Component {
                                 <p className="genre-typology">Genre: {this.state.genre}</p>
                                 <p className="genre-typology">Typology: {this.state.typology}</p>
                             </div>
-
                         </div>
 
                         <div className="col-md-4">
@@ -95,8 +91,6 @@ class UserPost extends Component {
                                 <Button onClick={this.showModal}>Update</Button>
                             </div>
                             <img style={{ width: '290px', marginTop: '10%', borderRadius: '10px', padding: '2%', background: "#fff" }} src={this.state.cover} alt={this.state.title} />
-
-
                         </div>
                     </div>
                     <div className="row">
@@ -106,7 +100,7 @@ class UserPost extends Component {
                         </div>
                         <div className="col-md-4">
                             <h6>Add your comment here</h6>
-                            <CommentForm newCommentAdded={() => this.handleNewComment()} />
+                            <CommentForm user={this.props.loggedInUser} post={this.state._id} newCommentAdded={() => this.handleNewComment()} />
                         </div>
                     </div>
                 </div>

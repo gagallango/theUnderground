@@ -1,10 +1,6 @@
 import React from 'react'
 
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
-import Col from 'react-bootstrap/Col'
-import Card from 'react-bootstrap/Card'
-import CardGroup from 'react-bootstrap/CardGroup'
 
 
 const PostCard = props => {

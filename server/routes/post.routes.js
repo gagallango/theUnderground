@@ -50,7 +50,7 @@ router.get('/detail/:id', (req, res, next) => {
             path: 'comments',
             model: 'Comment',
             populate: {
-                path: 'creator',
+                path: 'creatorID',
                 model: 'User'
             }
         }])

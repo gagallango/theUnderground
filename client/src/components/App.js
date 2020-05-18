@@ -46,7 +46,7 @@ class App extends Component {
           <div className="main-container">
             <Switch>
               <Route path='/profile' render={() => this.state.loggedInUser ? <Profile loggedInUser={this.state.loggedInUser} /> : <Redirect to="/" />} />
-              <Route path='/post/detail/:id' render={props => <UserPost {...props} />} />
+              <Route path='/post/detail/:id' render={props => <UserPost {...props} loggedInUser={this.state.loggedInUser} />} />
               <Route path='/explore' render={props => <AllUserPosts {...props} />} />
               <Route path='/post/new' exact render={() => <NewPost user={this.state.loggedInUser} />} />
               <Route path='/post/detail/:id/edit' exact render={() => <EditPost user={this.state.loggedInUser} />} />

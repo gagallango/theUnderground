@@ -15,7 +15,7 @@ class AllUserPosts extends Component {
         super(props)
         this.state = {
             posts: [],
-            typeValue: ''
+            genreValue: []
         }
         this.postService = new PostService()
     }
@@ -30,10 +30,19 @@ class AllUserPosts extends Component {
         this.displayAllPosts()
     }
 
+    filterSearch = () => {
+        const posts = this.state.posts
+            .filter(post => {
+                console.log(post.genre)
+                post.genre.includes(this.state.genreValue)
+            })
+        this.setState({ filteredPosts: posts })
+    }
+
     handleFilterByGenre = e => {
         const value = e.currentTarget.value
-        this.setState({ typeValue: value })
-
+        console.log(value)
+        this.setState({ genreValue: value }, () => this.filterSearch())
     }
 
     render() {

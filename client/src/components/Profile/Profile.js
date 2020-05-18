@@ -37,7 +37,6 @@ class Profile extends Component {
 
     render() {
         if (this.state.user) {
-            const { username, favoriteGenre, profilePic } = this.state.user
             return (
                 <>
                     <div className="main-profile">

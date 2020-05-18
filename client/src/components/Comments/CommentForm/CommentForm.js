@@ -5,8 +5,8 @@ import Button from 'react-bootstrap/Button'
 import CommentService from '../../../service/comment.service'
 
 class CommentForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             content: '',
             rating: '',
@@ -16,7 +16,6 @@ class CommentForm extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target
-
         this.setState({
             [name]: value
         })
@@ -24,8 +23,15 @@ class CommentForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        this.commentService.addComment(this.state)
-            .then(() => this.finishAction())
+        const comment = { ...this.state }
+        comment.user = this.props.user._id
+        comment.post = this.props.post
+        this.commentService.addComment(comment)
+            .then(response => {
+                if (response.data.create === true) {
+                    this.setState({ redirect: true })
+                }
+            })
             .catch(err => console.log(err))
     }
 
