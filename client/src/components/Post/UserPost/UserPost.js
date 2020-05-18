@@ -92,6 +92,7 @@ class UserPost extends Component {
                             </div>
                             <img style={{ width: '290px', marginTop: '10%', borderRadius: '10px', padding: '2%', background: "#fff" }} src={this.state.cover} alt={this.state.title} />
                         </div>
+
                     </div>
                     <div className="row">
                         <div className="col-md-8">
