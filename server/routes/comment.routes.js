@@ -13,20 +13,20 @@ router.post('/new', (req, res, next) => {
         creator: user,
         post: post
     }
-    console.log(req.body)
+    let result
     Comment.create(newComment)
         .then(newReview => {
-            console.log(newReview._id)
+            result = newReview;
             let updateUser = User.findByIdAndUpdate(user, { $push: { myReviews: newReview._id } }, { new: true })
             let updatePost = Post.findByIdAndUpdate(post, { $push: { comments: newReview._id } }, { new: true })
-            return Promise.all([updateUser, updatePost])
+            Promise.all([updateUser, updatePost])
         })
         .then(response => {
-            console.log("FUNCIONA")
-            res.json(response.data)
+            res.json(result.populate('creator').execPopulate())
         })
         .catch(err => console.log(err))
 })
+
 
 router.get('/:id/delete', (req, res, next) => {
     Comment.findByIdAndRemove(req.params.id, { new: true })

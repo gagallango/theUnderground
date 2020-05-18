@@ -17,10 +17,9 @@ router.post('/newPost', (req, res, next) => {
     }
     Post.create(postInfo)
         .then(newPost => {
-            User.findByIdAndUpdate(user, { $push: { userPosts: newPost._id } }, { new: true })
-                .then(() => res.json({ create: true }))
-                .catch(err => next(new Error(err)))
+            return User.findByIdAndUpdate(user, { $push: { userPosts: newPost._id } }, { new: true })
         })
+        .then(() => res.json({ create: true }))
         .catch(err => next(new Error(err)))
 })
 
@@ -50,7 +49,7 @@ router.get('/detail/:id', (req, res, next) => {
             path: 'comments',
             model: 'Comment',
             populate: {
-                path: 'creatorID',
+                path: 'creator',
                 model: 'User'
             }
         }])

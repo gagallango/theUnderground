@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-
 import PostService from '../../../service/post.service'
 import PostCard from '../PostCard/PostCard'
-
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
@@ -53,13 +51,13 @@ class AllUserPosts extends Component {
         this.setState({ typologyValue: value }, () => this.filterSearch())
     }
 
-
     render() {
+        console.log(this.props)
         return (
             <>
                 <Container as="section">
-                    <Row className="restaurants-filter">
-                        <Col md={4}>
+                    <Row>
+                        <Col>
                             <Form>
                                 <Form.Group controlId="exampleForm.SelectCustom">
                                     <Form.Label>Choose by genre</Form.Label>
@@ -70,23 +68,25 @@ class AllUserPosts extends Component {
                                     </Form.Control>
                                 </Form.Group>
                             </Form>
-                            <Form>
-                                <Form.Group controlId="exampleForm.SelectCustom">
-                                    <Form.Label>Choose by typology</Form.Label>
-                                    <Form.Control onChange={this.handleFilterByTypology} as="select" style={{ width: '200px' }} custom>
-                                        <option value="Descriptive">Descriptive</option>
-                                        <option value="Narrative">Narrative</option>
-                                        <option value="Expository">Expository</option>
-                                        <option value="Argumentative">Argumentative</option>
-                                        <option value="Literature">Literature</option>
-                                    </Form.Control>
-                                </Form.Group>
-                            </Form>
+                            <div className="typology-filter">
+                                <Form>
+                                    <Form.Group controlId="exampleForm.SelectCustom">
+                                        <Form.Label>Choose by typology</Form.Label>
+                                        <Form.Control onChange={this.handleFilterByTypology} as="select" style={{ width: '200px' }} custom>
+                                            <option value="Descriptive">Descriptive</option>
+                                            <option value="Narrative">Narrative</option>
+                                            <option value="Expository">Expository</option>
+                                            <option value="Argumentative">Argumentative</option>
+                                            <option value="Literature">Literature</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                </Form>
+                            </div>
                         </Col>
                     </Row>
-                </Container>
+                </Container >
                 <div className="alluserposts">
-                    <h1>All posts from users</h1>
+                    <h3>All posts from users</h3>
                     {this.displayPosts()}
                 </div>
             </>

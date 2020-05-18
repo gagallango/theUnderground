@@ -3,12 +3,11 @@ import Col from 'react-bootstrap/Col'
 import './Comment.css'
 
 const ReviewCard = review => {
-
     return (
         <>
             <div className="comment-style">
                 <Col md={{ span: 8, offset: 1 }}>
-                    <h6 className="user-info">{review.creator.username}</h6>
+                    {review.creator.username}
                 </Col>
                 <Col md={{ span: 8, offset: 1 }} className="comment">
                     {review.content}

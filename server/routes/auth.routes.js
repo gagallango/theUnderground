@@ -12,7 +12,6 @@ const bcryptSalt = 10
 router.post('/signup', (req, res, next) => {
 
     const { username, email, password, favoriteGenre, profilePic } = req.body
-    console.log(req.body)
     if (!username || !password) {
         res.status(400).json({ message: 'Provide username and password' });
         return;
@@ -29,7 +28,6 @@ router.post('/signup', (req, res, next) => {
             return;
         }
         if (foundUser) {
-            console.log("ESTA EN EL FIND")
             res.status(400).json({ message: 'Username taken. Choose another one.' });
             return;
         }

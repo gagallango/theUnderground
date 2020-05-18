@@ -28,9 +28,8 @@ class CommentForm extends Component {
         comment.post = this.props.post
         this.commentService.addComment(comment)
             .then(response => {
-                if (response.data.create === true) {
-                    this.setState({ redirect: true })
-                }
+                this.setState({ content: "", rating: "" })
+                this.props.newCommentAdded()
             })
             .catch(err => console.log(err))
     }
@@ -59,8 +58,6 @@ class CommentForm extends Component {
             </>
         )
     }
-
-
 }
 
 export default CommentForm

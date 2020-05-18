@@ -18,13 +18,7 @@ class Profile extends Component {
 
     displayPosts = () => {
         return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} key={idx}><li>{post.title} </li></Link >)
-        // return this.state.user.userPosts.map(post => <UserPost key={post.id}{...post} />)
-
     }
-
-    // displayReviews = () => {
-    //     return this.state.user.myReviews.splice(0, 3).map((review) => <ReviewCard key={review._id} {...review} />)
-    // }
 
     componentDidMount = () => {
         this.postService.getAllUserPosts(this.state.user._id)
@@ -34,8 +28,8 @@ class Profile extends Component {
             .catch(err => console.log(err))
     }
 
-
     render() {
+        console.log(this.state.posts)
         if (this.state.user) {
             return (
                 <>
