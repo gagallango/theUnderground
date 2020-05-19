@@ -3,6 +3,9 @@ import AuthService from '../../service/auth.service'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import './Login.css'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 
 class Login extends Component {
     constructor(props) {
@@ -36,28 +39,32 @@ class Login extends Component {
     }
     render() {
         return (
-            <div className="container-sign">
-                <div className="juju">
-                    <div>
-                        <h3>LOGIN</h3>
-                        <Form onSubmit={this.handleSubmit}>
-                            <Form.Group controlId="name">
-                                <Form.Label className="inputname">Username</Form.Label>
-                                <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
-                            </Form.Group>
-                            <Form.Group controlId="pwd">
-                                <Form.Label className="inputname">Password</Form.Label>
-                                <Form.Control className="inputform" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-                            </Form.Group>
-                            <p
-                                className='error-message'
-                                style={{ display: this.state.errorMessage ? 'block' : 'none' }}
-                            >{this.state.errorMessage}</p>
-                            <Button type="submit">Login</Button>
-                        </Form>
-                    </div>
-                </div>
-            </div>
+            <>
+                <Container className="joinform-dos">
+                    <Row>
+                        <Col className="sign-form" md={6}>
+                            <Form onSubmit={this.handleSubmit}>
+                                <Form.Group controlId="name">
+                                    <Form.Label className="inputname">Username</Form.Label>
+                                    <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                                </Form.Group>
+                                <Form.Group controlId="pwd">
+                                    <Form.Label className="inputname">Password</Form.Label>
+                                    <Form.Control className="inputform" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+                                </Form.Group>
+                                <p
+                                    className='error-message'
+                                    style={{ display: this.state.errorMessage ? 'block' : 'none' }}
+                                >{this.state.errorMessage}</p>
+                                <Button className="boton" type="submit">Login</Button>
+                            </Form>
+                        </Col>
+                        <Col className="join-the" md={6}>
+                            <h1 style={{ marginTop: '15px' }}>LOGIN</h1>
+                        </Col>
+                    </Row>
+                </Container>
+            </>
         )
     }
 }

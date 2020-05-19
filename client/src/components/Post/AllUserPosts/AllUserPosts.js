@@ -56,7 +56,7 @@ class AllUserPosts extends Component {
         return (
             <>
                 <Container as="section">
-                    <Row>
+                    {/* <Row>
                         <Col>
                             <Form>
                                 <Form.Group controlId="exampleForm.SelectCustom">
@@ -83,12 +83,10 @@ class AllUserPosts extends Component {
                                 </Form>
                             </div>
                         </Col>
-                    </Row>
-                </Container >
-                <div className="alluserposts">
-                    <h3>All posts from users</h3>
+                    </Row> */}
                     {this.displayPosts()}
-                </div>
+                </Container >
+
             </>
         )
     }

@@ -26,6 +26,7 @@ module.exports = app => {
                     model: 'User'
                 }
             })
+            .populate('likedPosts')
             .populate('userPosts')
             .then(theUser => next(null, theUser))
             .catch(err => next(err))
@@ -45,6 +46,7 @@ module.exports = app => {
                     model: 'User'
                 }
             })
+            .populate('likedPosts')
             .populate('userPosts')
             .then(user => {
                 if (!user) {

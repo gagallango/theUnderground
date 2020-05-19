@@ -7,7 +7,7 @@ const postSchema = new Schema({
         required: true,
     },
     content: {
-        type: String,
+        type: [String],
         required: true
     },
     genre: {
@@ -21,6 +21,8 @@ const postSchema = new Schema({
         type: [String],
         enum: ['Descriptive', 'Narrative', 'Expository', 'Argumentative', 'Literature']
     },
+    audio: String,
+    likes: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     cover: {
         type: String
     },

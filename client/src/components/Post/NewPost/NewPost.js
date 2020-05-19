@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-
 import PostService from '../../../service/post.service'
 import CoverService from '../../../service/cover.service'
-
-
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Col from 'react-bootstrap/Col'
@@ -12,6 +9,10 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 
 import './NewPost.css'
+
+import MicRecorder from 'mic-recorder-to-mp3';
+
+const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
 
 class NewPost extends Component {
@@ -24,11 +25,37 @@ class NewPost extends Component {
             genre: 'Narrative',
             typology: 'Descriptive',
             cover: '',
-            redirect: false
+            redirect: false,
+            isRecording: false,
+            blobURL: '',
+            isBlocked: false,
+            audio: ''
         }
         this.newPostService = new PostService()
         this.coverService = new CoverService()
     }
+
+    start = () => {
+        if (this.state.isBlocked) {
+            console.log('Permission Denied');
+        } else {
+            Mp3Recorder
+                .start()
+                .then(() => {
+                    this.setState({ isRecording: true });
+                }).catch((e) => console.error(e));
+        }
+    };
+
+    stop = () => {
+        Mp3Recorder
+            .stop()
+            .getMp3()
+            .then(([buffer, blob]) => {
+                const blobURL = URL.createObjectURL(blob)
+                this.setState({ blobURL, isRecording: false });
+            }).catch((e) => console.log(e));
+    };
 
     handleInputChange = e => {
         const { name, value } = e.target
@@ -64,6 +91,34 @@ class NewPost extends Component {
             .catch(err => console.log(err))
     }
 
+    handleAudioUpload = e => {
+        const uploadData = new FormData()
+        uploadData.append('audio', e.target.files[0])
+        this.coverService.handleUploadAudio(uploadData)
+            .then(response => {
+                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+                this.setState({
+                    ...this.state, audio: response.data.secure_url
+                })
+            })
+            .catch(err => console.log(err))
+    }
+
+    componentDidMount() {
+        navigator.getUserMedia({ audio: true },
+            () => {
+                console.log('Permission Granted');
+                this.setState({ isBlocked: false });
+            },
+            () => {
+                console.log('Permission Denied');
+                this.setState({ isBlocked: true })
+            },
+        );
+    }
+
+
+
     render() {
         if (this.state.redirect) {
             return (<Redirect to="/profile" />)
@@ -80,7 +135,7 @@ class NewPost extends Component {
                         </Form.Group>
                         <Form.Group as={Row} controlId="content">
                             <Col sm={10}>
-                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="3" value={this.state.content} onChange={this.handleInputChange} />
+                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="10" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="genre">
@@ -110,6 +165,13 @@ class NewPost extends Component {
                             <Form.Label>Choose your cover</Form.Label>
                             <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Record your text so anyone can hear it</Form.Label>
+                            <Button onClick={this.start} disabled={this.state.isRecording}>Record</Button>
+                            <Button onClick={this.stop} disabled={!this.state.isRecording} >Stop</Button>
+                            <audio src={this.state.blobURL} controls="controls" />
+                        </Form.Group>
+                        <br></br>
                         <Button variant="primary" type="submit" >Publish</Button>
                     </Form>
                 </Container>

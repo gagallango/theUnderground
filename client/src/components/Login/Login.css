@@ -1,12 +1,6 @@
-/* 
-form {
-    display: inline-block;
+.joinform-dos {
+    border-radius: 10px;
+    margin-top: 6%;
+    background: #a09abc;
+    padding: 10%;
 }
-
-.container-sign {
-    margin: 0 auto;
-    background: #7ba6ad;
-    color: #CFEBDF;
-    padding: 0% 15%;
-}
- */

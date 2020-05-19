@@ -25,6 +25,7 @@ const userSchema = new Schema({
         type: String
     },
     userPosts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+    likedPosts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
     verificationToken: String,
     recuperationToken: String
 }, {

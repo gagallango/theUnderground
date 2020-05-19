@@ -1,4 +1,4 @@
-.newpost {
+/* .newpost {
    padding-left: 100px;
     margin-left: 25%;
     margin-top: 10%;
@@ -12,16 +12,23 @@
 .form-control {
     width: 230%;
     font-size: .8em;
+} */
+
+ .title {
+    margin-bottom: 2%;
+    color: #f9f9f9;
+    font-weight: 100;
 } 
 
-.title {
-    margin-bottom: 2%;
-    color: #333;
-    font-weight: 100;
-}
-
-.btn-primary {
+/* .btn-primary {
        color: #fff;
     background-color: #C4C4C4;
     border-color:#C4C4C4; 
+} */
+
+.newpost {
+    margin: 4%;
+    background: #e1dee9;
+    padding: 3%;
+    border-radius: 5px;
 }

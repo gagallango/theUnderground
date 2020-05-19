@@ -33,7 +33,8 @@ Promise.all([deleteUsers, deletePost, deleteComment])
                     "Poetry"]),
                 myReviews: [],
                 profilePic: faker.internet.avatar(),
-                userPosts: []
+                userPosts: [],
+                likedPosts: []
             }
             users.push(user)
         };
@@ -79,7 +80,7 @@ Promise.all([deleteUsers, deletePost, deleteComment])
                 creator: allU[randomNum(allU.length)],
                 content: faker.lorem.sentences(),
                 post: allPost[randomNum(allPost.length)],
-                rating: randomNum(5),
+                rating: randomNum(6),
             }
             comments.push(comment)
         };

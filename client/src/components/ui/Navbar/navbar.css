@@ -1,14 +1,15 @@
 .main-nav{
-    width:170px !important; 
+    width:200px ; 
     display:flex;
     flex-direction:column;
     height:100vh;
-    background-color:#7ba6ad;
-    color:white; 
+    background-color:#a09abc;
+    color:#F9F9F9; 
    
 } .main-nav a {
     text-decoration: none;
-    color: #eee;
+    color: #F9F9F9;
+        font-size: 22px;
 }
 
 .nav-items{
@@ -25,7 +26,7 @@
 .nav-items ul li{
     padding:10px;
     font-size:12px;
-    color:white;
+    color:#F9F9F9;
 }
 
 .logout {
@@ -34,4 +35,9 @@
 
 .a-main {
     font-weight: 600;
+}
+
+.hi-username {
+    margin-top: 20px;
+    font-size: 20px;
 }

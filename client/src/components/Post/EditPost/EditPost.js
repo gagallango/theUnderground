@@ -73,7 +73,7 @@ class NewPost extends Component {
                         </Form.Group>
                         <Form.Group as={Row} controlId="content">
                             <Col sm={10}>
-                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="3" value={this.state.content} onChange={this.handleInputChange} />
+                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="40" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="genre">

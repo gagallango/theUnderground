@@ -1,56 +1,19 @@
-
-form {
-    display: inline-block;
+.join-the {
+    margin-top: 5%;
+    font-size: 2em;
+    text-align: center;
+    color: #f9f9f9;
 }
 
-.container-sign {
-    margin: 0 auto;
-    background: #7ba6ad;
-    color: #CFEBDF;
-    padding: 5% 15%;
-    /* width: 74%; */
-    height: 800px;
-    line-height: 10px;
+.sign-form{
+    margin-top: 5%;
+        color: #f9f9f9;
+    margin-bottom: 5%;
 }
 
-.inputform {
-    border: none;
-    background: transparent;
-    border-bottom: 1px solid #888;
-}
-
-.inputname {
-    padding-right: 20px;
-    min-width: 135px;
-    font-size: 10px;
-    font-weight: 100;
-    text-transform: uppercase;
-}
-
-.inputform{
-       width: 80%;
-}
-.genres {
-    border: none;
-    background: transparent;
-}
-
-h1 {
-    font-size: 2.3em;
-}
-
-.already {
-    transform: translate(0%, 60%);
-} 
-
-.link-login {
-    color: #fff;
-}
-
-
-.juju {
-    background: #CFEBDF;
-    padding: 3%;
+.signup {
     border-radius: 10px;
-    color: #7ba6ad
+    margin-top: 5%;
+    background: #a09abc;
+    padding-right: 5%;
 }

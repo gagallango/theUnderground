@@ -5,13 +5,29 @@ const Post = require('./../models/post.model')
 
 
 //NUEVO POST FUNCIONA
+router.post('/likePost', (req, res, next) => {
+    console.log("entra en likePost", req.body)
+    const { user, post } = req.body
+    // 1. Actualiza el post / restaurant con el like
+    let updatePost = Post.findByIdAndUpdate(post, { $push: { likes: user } }, { new: true })
+    let updateUser = User.findByIdAndUpdate(user, { $push: { likedPosts: post } }, { new: true })
+
+    Promise.all([updateUser, updatePost])
+        .then(data => res.json(data))
+        .catch(err => console.log(err))
+    // 2. Actualiza al user con el like
+
+})
+
+
 router.post('/newPost', (req, res, next) => {
-    const { title, content, genre, typology, cover, user } = req.body
+    const { title, content, genre, typology, audio, cover, user } = req.body
     const postInfo = {
         title,
         content,
         genre,
         typology,
+        audio,
         cover,
         creatorID: user
     }
@@ -70,6 +86,8 @@ router.get('/deletePost/:id', (req, res, next) => {
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })
+
+
 
 
 module.exports = router

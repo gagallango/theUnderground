@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import AuthService from './../../service/auth.service'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import Row from 'react-bootstrap/Row'
 import { Link } from 'react-router-dom'
 import './Signup.css'
 import CoverService from '../../service/cover.service'
@@ -64,52 +67,52 @@ class Signup extends Component {
     render() {
         return (
             <>
-                <div className="container-sign">
-                    <div className="juju">
-                        <div class="asidesign">
-                            <h1>JOIN <br></br> THE HOOD</h1>
-                            <p><small>Already have an account? <Link style={{ fontWeight: '800', color: '#7ba6ad' }} to="/login">Login</Link></small></p>
-                        </div>
-
-                        <div className="row-sign">
-                            <div className="form-total">
-                                <Form onSubmit={this.handleSubmit} className="join-form">
-                                    <Form.Group controlId="name">
-                                        <Form.Label className="inputname">Username</Form.Label>
-                                        <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
-                                    </Form.Group>
-                                    <Form.Group controlId="email">
-                                        <Form.Label className="inputname">Email</Form.Label>
-                                        <Form.Control className="inputform" name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
-                                    </Form.Group>
-                                    <Form.Group controlId="pwd">
-                                        <Form.Label className="inputname">Password</Form.Label>
-                                        <Form.Control className="inputform" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
-                                    </Form.Group>
-                                    <Form.Group controlId="favoriteGenre">
-                                        <Form.Label className="inputname">Favorite genre</Form.Label>
-                                        <Form.Group className="genres" name=" favoriteGenre" value={this.state.favoriteGenre} onChange={this.handleInputChange} >
-                                            <Form.Control as="select" multiple name="favoriteGenre">
-                                                <option>Narrative</option>
-                                                <option>NonFiction</option>
-                                                <option>Poetry</option>
-                                            </Form.Control>
-                                        </Form.Group>
-                                    </Form.Group>
-                                    <Form.Group controlId="cover">
-                                        <Form.Label>Choose your profile pic</Form.Label>
-                                        <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
-                                    </Form.Group>
-                                    <p
-                                        className='error-message'
-                                        style={{ display: this.state.errorMessage ? 'block' : 'none' }}
-                                    >{this.state.errorMessage}</p>
-                                    <Button type="submit">Join</Button>
-                                </Form>
+                <Container className="signup">
+                    <Row>
+                        <Col className="join-the" md={6}>
+                            <div className="title-form">
+                                <h1>JOIN <br></br> THE <br></br>HOOD</h1>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <p><small>Already have an account? <Link style={{ color: "#f9f9f9" }} to="/login">Login</Link></small></p>
+                        </Col>
+                        <Col className="sign-form" md={6}>
+                            <Form onSubmit={this.handleSubmit} className="join-form">
+                                <Form.Group controlId="name">
+                                    <Form.Label className="inputname">Username</Form.Label>
+                                    <Form.Control className="inputform" name="username" type="text" value={this.state.username} onChange={this.handleInputChange} />
+                                </Form.Group>
+                                <Form.Group controlId="email">
+                                    <Form.Label className="inputname">Email</Form.Label>
+                                    <Form.Control className="inputform" name="email" type="text" value={this.state.email} onChange={this.handleInputChange} />
+                                </Form.Group>
+                                <Form.Group controlId="pwd">
+                                    <Form.Label className="inputname">Password</Form.Label>
+                                    <Form.Control className="inputform" name="password" type="password" value={this.state.password} onChange={this.handleInputChange} />
+                                </Form.Group>
+                                <Form.Group controlId="favoriteGenre">
+                                    <Form.Label className="inputname">Favorite genre</Form.Label>
+                                    <Form.Group className="genres" name=" favoriteGenre" value={this.state.favoriteGenre} onChange={this.handleInputChange} >
+                                        <Form.Control as="select" multiple name="favoriteGenre">
+                                            <option>Narrative</option>
+                                            <option>NonFiction</option>
+                                            <option>Poetry</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                </Form.Group>
+                                <Form.Group controlId="cover">
+                                    <Form.Label>Choose your profile pic</Form.Label>
+                                    <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
+                                </Form.Group>
+                                <p
+                                    className='error-message'
+                                    style={{ display: this.state.errorMessage ? 'block' : 'none' }}
+                                >{this.state.errorMessage}</p>
+                                <Button className="boton" type="submit">Join</Button>
+
+                            </Form>
+                        </Col>
+                    </Row>
+                </Container>
             </>
         )
     }

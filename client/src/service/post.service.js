@@ -11,5 +11,5 @@ export default class posts {
     createPost = post => this.service.post('/post/newPost', post)
     deletePost = id => this.service.get(`/post/deletePost/${id}`)
     editPost = (id, post) => this.service.post(`/post/editPost/${id}`, post)
-
+    likePost = like => this.service.post(`/post/likePost/`, like)
 }

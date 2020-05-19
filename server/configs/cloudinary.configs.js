@@ -12,7 +12,9 @@ cloudinary.config({
 const storage = cloudinaryStorage({
     cloudinary: cloudinary,
     folder: 'the-underground',
-    allowedFormats: ['jpg', 'png', 'gif', 'pdf'],
+    allowedFormats: ['jpg', 'png', 'gif', 'pdf', 'mp3'],
+    format: 'mp3',
+    resource_type: 'video',
     filename: function (req, file, cb) {
         cb(null, file.originalname)
     },

@@ -4,17 +4,42 @@
     margin-left: 6%;
     margin-top: 3%;
     padding: 4%;
-    background: #eee;
+    background: #F9F9F9;
     border-radius: 10px;
     border: 1px solid #c4c4c4;
 }
 
 .main-profile h4 {
     margin-bottom: 2%;
-    color: #333;
+    color: #a09abc;
     font-weight: 100;
 }
 
 .post-list {
     list-style: none;
+    
+}
+
+.link-posts {
+    color: #F9F9F9;
+    font-size: 17px;
+}
+
+.link-posts:hover {
+    color: #F9F9F9;
+}
+.col-md-4 {
+    margin: 6% 6%;
+    background: #a09abc;
+    color: #F9F9F9;
+    border-radius: 5px;
+    padding: 2%;
+    width: 800px;
+}
+
+.title-profile {
+        background: #d5cfe1;
+    padding: 4%;
+    margin-bottom: 8%;
+    border-radius: 5px;
 }

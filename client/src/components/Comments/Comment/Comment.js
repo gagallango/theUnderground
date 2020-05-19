@@ -7,13 +7,13 @@ const ReviewCard = review => {
         <>
             <div className="comment-style">
                 <Col md={{ span: 8, offset: 1 }}>
-                    {review.creator.username}
+                    <b>{review.creator.username}</b>
                 </Col>
                 <Col md={{ span: 8, offset: 1 }} className="comment">
                     {review.content}
                 </Col>
                 <Col md={{ span: 8, offset: 1 }} className="rating-info">
-                    {review.rating}<img style={{ width: '10px' }} src='/images/star-icon.png' alt="Star icon" />
+                    {review.rating}<img style={{ width: '10px' }} src='/images/star-icon.png' alt="RateIcon" />
                 </Col>
             </div>
         </>

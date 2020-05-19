@@ -1,6 +1,13 @@
 body {
     margin: 0;
     padding: 0;
+    background: #F9F9F9;
+}
+
+
+Button {
+    background: #675b85;
+    border: #675b85;
 }
 
 #main-wrapper{
@@ -15,39 +22,39 @@ aside, main {
 
 aside {
     display: flex;
-    background: #7ba6ad;
-    color: #CFEBDF;
+    background: #a09abc;
+    color: #F9F9F9;
     width: 25%;
     min-height: 100vh;
     justify-content: flex-end;
 } h1 {
-    font-size: 1.5em;
+    font-size: 4em;
 }
 
 main {
     display: flex;
-    background: #CFEBDF;
-    color: #7ba6ad;
+    background: #F9F9F9;
+    color: #a09abc;
     min-height: 100vh;
     width: 100%;
     justify-content: flex-start;
 }
 
 .underground {
-    font-size: 5em;
+    font-size: 8em;
     padding-left: 1%;
 }
 
 .sign-log {
-    transform: translate(-100px, 40px);
+    transform: translate(-111px, 60px);
 } a {
-    color: #7ba6ad;
+    color: #a09abc;
     text-decoration: none;
     margin-right: 10px;
     font-size: 1.2em;
     font-weight: 500;
 } a:hover {
-    color: #7ba6ad;
+    color: #a09abc;
     text-decoration: none;
 }
 
@@ -71,7 +78,7 @@ section .scroll {
 }
 
 section .scroll div {
-    color: #7ba6ad;
+    color: #a09abc;
     font-size:1em ;
     white-space: nowrap;
     font-weight: 900;

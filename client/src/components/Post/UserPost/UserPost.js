@@ -53,10 +53,19 @@ class UserPost extends Component {
         this.displayThePost()
     }
 
+    submitLike = (e) => {
+        console.log("ha entrado en submit")
+        e.preventDefault()
+        const like = { user: this.props.loggedInUser._id, post: this.state._id }
+        this.postService.likePost(like)
+            .then(() => console.log("DONE"))
+            .catch((err) => console.log(err))
+    }
+
     render() {
         console.log(this.state)
         if (!this.state.creatorID) {
-            return <h1>LOADING...</h1>
+            return <h1></h1>
         } else {
             return (
                 <>
@@ -66,41 +75,48 @@ class UserPost extends Component {
                                 <EditPost {...this.state} finishPost={this.finishPost} hideModalWindow={this.hideModal} />
                             </Modal.Body>
                         </Modal>
-                        <div className="row">
-                            <div className="col-md-8">
-                                {this.state.creatorID ? <h6>{this.state.creatorID.username}</h6> : null}
-                                <h2>{this.state.title}</h2>
-                                <p className="content-box">{this.state.content}</p>
-                                <div className="genre-typo">
-                                    <p className="genre-typology">Genre: {this.state.genre}</p>
-                                    <p className="genre-typology">Typology: {this.state.typology}</p>
-                                </div>
-                            </div>
-                            <div className="col-md-4">
-                                {this.state.creatorID._id === this.props.loggedInUser._id ?
-                                    <div className="buttons-post">
-                                        <Button onClick={() => this.handleDelete(this.state._id)}>Delete</Button>
-                                        <Button onClick={this.showModal}>Update</Button>
+                        <div className="main-text">
+                            <div className="row">
+                                <div className="col-7">
+                                    {this.state.creatorID ? <h6>{this.state.creatorID.username}</h6> : null}
+                                    <h2>{this.state.title}</h2>
+                                    <div className="genre-typo">
+                                        <p className="genre-genre"><b>Genre:</b> {this.state.genre}</p>
+                                        <p className="genre-typology"><b>Typology:</b> {this.state.typology}</p>
                                     </div>
-                                    :
-                                    null
-                                }
-                                <img style={{ width: '290px', marginTop: '10%', borderRadius: '10px', padding: '2%', background: "#fff" }} src={this.state.cover} alt={this.state.title} />
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-8">
-                                <h6>Comments</h6>
-                                {this.state && this.displayComment()}
-                            </div>
-                            {this.state.creatorID._id === this.props.loggedInUser._id ?
-                                null
-                                :
-                                <div className="col-md-4">
-                                    <h6>Add your comment here</h6>
-                                    <CommentForm user={this.props.loggedInUser} post={this.state._id} newCommentAdded={() => this.handleNewComment()} />
+                                    <p className="content-box">{this.state.content}</p>
+                                    {this.state.creatorID._id === this.props.loggedInUser._id ?
+                                        <div className="buttons-post">
+                                            <Button className="boton" onClick={() => this.handleDelete(this.state._id)}>Delete</Button>
+                                            <Button className="boton" onClick={this.showModal}>Update</Button>
+                                        </div>
+                                        :
+                                        <Button onClick={this.submitLike}><img style={{ width: '15px' }} src='/images/black-heart.png' alt="LikeIcon" /></Button>
+                                    }
                                 </div>
-                            }
+                                <div className="col-5">
+                                    <img style={{ width: '400px' }} src={this.state.cover} alt={this.state.title} />
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div className="main-image">
+                            <div className="row">
+                                <div className="col-6">
+                                    {this.state && this.displayComment()}
+                                </div>
+                                <div className="col-4">
+
+                                    {this.state.creatorID._id === this.props.loggedInUser._id ?
+                                        null
+                                        :
+                                        <div>
+                                            <CommentForm user={this.props.loggedInUser} post={this.state._id} newCommentAdded={() => this.handleNewComment()} />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </>
