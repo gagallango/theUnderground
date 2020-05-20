@@ -72,7 +72,6 @@ class UserPost extends Component {
         if (!this.state.creatorID) {
             return <h1></h1>
         } else {
-            console.log(this.state.content)
             return (
                 <>
                     <div className="post-details">
@@ -93,16 +92,7 @@ class UserPost extends Component {
                             <div className="cover-image">
                                 <img style={{ width: '500px', margin: '2%' }} src={this.state.cover} alt={this.state.title} />
                             </div>
-                            <p className="content-box">
-                                {this.state.content.blocks.map(block => {
-                                    if (block.type === "header") {
-                                        return <h2>{block.data.text}</h2>
-                                    } else if (block.type === "paragraph") {
-                                        return <p>{block.data.text}</p>
-                                    }
-                                })}
-
-                            </p>
+                            <p className="content-box">{this.state.content}</p>
                             {this.state.creatorID._id === this.props.loggedInUser._id ?
                                 <div className="buttons-post">
                                     <Button className="boton" onClick={() => this.handleDelete(this.state._id)}>Delete</Button>

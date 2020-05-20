@@ -11,7 +11,8 @@ import UserPost from './Post/UserPost/UserPost'
 import Navbar from './ui/Navbar/Navbar'
 import AllUserPosts from './Post/AllUserPosts/AllUserPosts';
 import NewPost from './Post/NewPost/NewPost';
-import EditPost from './Post/EditPost/EditPost'
+import EditPost from './Post/EditPost/EditPost';
+import PostEditor from './PostEditor/PostEditor';
 
 class App extends Component {
 
@@ -50,6 +51,7 @@ class App extends Component {
               <Route path='/explore' render={props => <AllUserPosts {...props} />} />
               <Route path='/post/new' exact render={() => <NewPost user={this.state.loggedInUser} />} />
               <Route path='/post/detail/:id/edit' exact render={() => <EditPost user={this.state.loggedInUser} />} />
+              <Route path='/editorTest' render={props => <PostEditor {...props} />} />
             </Switch>
           </div>
         </div>

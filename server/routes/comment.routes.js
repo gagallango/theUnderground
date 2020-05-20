@@ -3,6 +3,7 @@ const router = express.Router()
 const Comment = require('../models/comment.model')
 const User = require('./../models/user.model')
 const Post = require('./../models/post.model')
+const ensureLogin = require('connect-ensure-login')
 
 //NUEVA REVIEW FUNCIONA
 router.post('/new', (req, res, next) => {

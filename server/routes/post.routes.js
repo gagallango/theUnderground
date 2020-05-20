@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('./../models/user.model')
 const Post = require('./../models/post.model')
+const ensureLogin = require('connect-ensure-login')
 
 
 //NUEVO POST FUNCIONA
@@ -24,13 +25,14 @@ router.post('/newPost', (req, res, next) => {
     const { title, content, genre, typology, audio, cover, user } = req.body
     const postInfo = {
         title,
-        content,
+        content: content,
         genre,
         typology,
         audio,
         cover,
         creatorID: user
     }
+    console.log(postInfo)
     Post.create(postInfo)
         .then(newPost => {
             return User.findByIdAndUpdate(user, { $push: { userPosts: newPost._id } }, { new: true })
@@ -43,9 +45,9 @@ router.post('/newPost', (req, res, next) => {
 router.get('/allUserPosts/:id', (req, res, next) => {
     User.findById(req.params.id)
         .populate('userPosts')
+        .populate('likedPosts')
         .then(data => {
-            const posts = data.userPosts
-            res.json({ posts })
+            res.json(data)
         })
         .catch(err => next(new Error(err)))
 })
@@ -53,6 +55,7 @@ router.get('/allUserPosts/:id', (req, res, next) => {
 //POSTS DE TODOS LOS USUARIOS FUNCIONA
 router.get('/allPosts', (req, res, next) => {
     Post.find()
+        .populate('creatorID')
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))
 })

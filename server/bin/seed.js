@@ -48,7 +48,31 @@ Promise.all([deleteUsers, deletePost, deleteComment])
             for (let i = 1; i <= 5; i++) {
                 posts.push({
                     title: faker.lorem.words(5),
-                    content: faker.lorem.paragraphs(paragraph_count = 3, supplemental = false),
+                    content: {
+                        "time": 1589992645725,
+                        "blocks": [{
+                            "type": "paragraph",
+                            "data": {
+                                "text": "The idea of eternal return is a mysterious one, and Nietzsche has often perplexed other philosophers with it: to think that everything recurs as we once experienced it, and that the recurrence itself recurs ad infinitum! What does this mad myth signify?&nbsp;"
+                            }
+                        }, {
+                            "type": "paragraph",
+                            "data": {
+                                "text": "Putting it negatively, the myth of eternal return states that a life which disappears once and for all, which does not return, is like a shadow, without weight, dead in advance, and whether it was horrible, beautiful, or sublime, its horror, sublimity, and beauty mean nothing. We need take no more note of it than of a war between two African kingdoms in the fourteenth century, a war that altered nothing in the destiny of the world, even if a hundred thousand blacks perished in excruciating torment.&nbsp;"
+                            }
+                        }, {
+                            "type": "paragraph",
+                            "data": {
+                                "text": "Will the war between two African kingdoms in the fourteenth century itself be altered if it recurs again and again, in eternal return? &nbsp;"
+                            }
+                        }, {
+                            "type": "paragraph",
+                            "data": {
+                                "text": "It will: it will become a solid mass, permanently protuberant, its inanity irreparable."
+                            }
+                        }],
+                        "version": "2.15.1"
+                    },
                     genre: faker.random.arrayElement(["Narrative",
                         "NonFiction",
                         "Poetry"]),

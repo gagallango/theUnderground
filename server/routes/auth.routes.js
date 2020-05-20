@@ -5,6 +5,7 @@ const User = require("../models/user.model")
 const Post = require('./../models/post.model')
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
+const ensureLogin = require('connect-ensure-login')
 
 
 
@@ -95,7 +96,7 @@ router.get('/loggedin', (req, res, next) => {
 
 //PROFILE FUNCIONA
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     User.findById(req.params.id)
         .then(data => res.json(data))
         .catch(err => next(new Error(err)))

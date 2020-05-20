@@ -6,10 +6,7 @@ const postSchema = new Schema({
         type: String,
         required: true,
     },
-    content: {
-        type: [String],
-        required: true
-    },
+    content: {},
     genre: {
         type: [String],
         enum: ["Narrative",

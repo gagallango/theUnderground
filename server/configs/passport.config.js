@@ -48,6 +48,14 @@ module.exports = app => {
             })
             .populate('likedPosts')
             .populate('userPosts')
+            .populate([{
+                path: 'userPosts',
+                model: 'Post',
+                populate: {
+                    path: 'creatorID',
+                    model: 'User'
+                }
+            }])
             .then(user => {
                 if (!user) {
                     return next(null, false, { message: "Nombre de usuario incorrecto" })
