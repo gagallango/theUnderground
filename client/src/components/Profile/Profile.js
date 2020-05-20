@@ -11,6 +11,7 @@ class Profile extends Component {
         this.state = {
             user: props.loggedInUser,
             posts: [],
+            likes: []
         }
     }
 
@@ -19,13 +20,13 @@ class Profile extends Component {
     }
 
     displayLikedPosts = () => {
-        return this.props.loggedInUser.likedPosts.map((fav, idx) => <Link to={`/post/detail/${fav._id}`} className="link-posts" key={idx}><li>{fav.title}</li></Link >)
+        return this.state.likes.map((fav, idx) => <Link to={`/post/detail/${fav._id}`} className="link-posts" key={idx}><li>{fav.title}</li></Link >)
     }
 
     componentDidMount = () => {
         this.postService.getAllUserPosts(this.state.user._id)
             .then(response => {
-                this.setState({ posts: response.data.posts })
+                this.setState({ posts: response.data.userPosts, likes: response.data.likedPosts })
             })
             .catch(err => console.log(err))
     }

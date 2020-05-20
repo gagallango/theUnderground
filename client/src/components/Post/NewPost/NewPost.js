@@ -9,7 +9,7 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 
 import './NewPost.css'
-
+import PostEditor from '../../PostEditor/PostEditor.js'
 import MicRecorder from 'mic-recorder-to-mp3';
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
@@ -121,7 +121,9 @@ class NewPost extends Component {
         );
     }
 
-
+    handlePostContent(content) {
+        this.setState({ content })
+    }
 
     render() {
         if (this.state.redirect) {
@@ -139,7 +141,8 @@ class NewPost extends Component {
                         </Form.Group>
                         <Form.Group as={Row} controlId="content">
                             <Col sm={10}>
-                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="10" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} />
+                                <PostEditor savePost={(content) => this.handlePostContent(content)} />
+                                {/* <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="10" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} /> */}
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="genre">
@@ -169,12 +172,12 @@ class NewPost extends Component {
                             <Form.Label>Choose your cover</Form.Label>
                             <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
-                        <Form.Group>
+                        {/* <Form.Group>
                             <Form.Label>Record your text so anyone can hear it</Form.Label>
                             <Button onClick={this.start} disabled={this.state.isRecording}>Record</Button>
                             <Button onClick={this.stop} disabled={!this.state.isRecording} >Stop</Button>
                             <audio src={this.state.blobURL} controls="controls" />
-                        </Form.Group>
+                        </Form.Group> */}
                         <br></br>
                         <Button className="boton" variant="primary" type="submit" >Publish</Button>
                     </Form>

@@ -4,11 +4,13 @@ import './PostCard.css'
 
 
 const PostCard = props => {
+
     return (
         <div class="card-post">
             <h4 style={{ textAlign: 'center', fontSize: '30px', color: '#7a7499' }}>{props.title}</h4>
             <div className="yay">
-                Written by:
+                Written by: <br></br>
+                {props.creatorID.username}
             </div>
             <div className="card-link">
                 <Link to={`/post/detail/${props._id}`}>Read</Link>

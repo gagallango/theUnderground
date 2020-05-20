@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col'
 import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
 
+import PostEditor from '../../PostEditor/PostEditor.js'
 
 
 class NewPost extends Component {
@@ -43,6 +44,10 @@ class NewPost extends Component {
             .catch(err => console.log(err))
     }
 
+    handlePostContent = content => {
+        this.setState({ ...this.state, content: content })
+    }
+
     handleFileUpload = e => {
 
         const uploadData = new FormData()
@@ -73,7 +78,8 @@ class NewPost extends Component {
                         </Form.Group>
                         <Form.Group as={Row} controlId="content">
                             <Col sm={10}>
-                                <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="40" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} />
+                                {/* <Form.Control name="content" placeholder="Write your text here" as="textarea" rows="10" cols="40" spellcheck="true" value={this.state.content} onChange={this.handleInputChange} /> */}
+                                <PostEditor savePost={this.handlePostContent} postContent={this.state.content} />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="genre">
