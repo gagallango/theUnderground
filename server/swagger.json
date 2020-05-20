@@ -1,0 +1,266 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "The Untherground API",
+    "version": "1.0.0",
+    "title": "The Untherground"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": ["http", "https"],
+  "produces": ["application/json"],
+  "consumes": ["application/json"],
+  "paths": {
+    "/user/login": {
+      "post": {
+        "description": "LogIn User",
+        "tags": ["auth"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "login credentials",
+            "schema": {
+              "$ref": "#/components/schemas/LoginDto"
+            },
+            "required": true
+          }
+        ],
+
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Invalid user id"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/user/signup": {
+      "post": {
+        "description": "Create a User",
+        "tags": ["auth"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "$ref": "#/components/schemas/SignupDto"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "CREATED",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/logout": {
+      "post": {
+        "description": "LogOut a User",
+        "tags": ["auth"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/loggedin": {
+      "get": {
+        "description": "Get Logged User Info",
+        "tags": ["auth"],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "404": {
+            "description": "No User Logged"
+          }
+        }
+      }
+    },
+    "/comment/new": {
+      "post": {
+        "description": "Get Logged User Info",
+        "tags": ["reviews"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "$ref": "#/components/schemas/NewCommentDto"
+            },
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment created",
+            "schema": {
+              "$ref": "#/definitions/Comment"
+            }
+          },
+          "404": {
+            "description": "No User Logged"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "required": ["username", "email", "password"],
+      "properties": {
+        "username": {
+          "type": "number"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "number"
+        },
+        "profilePic": {
+          "type": "string"
+        },
+        "verificationToken": {
+          "type": "string"
+        },
+        "recuperationToken": {
+          "type": "string"
+        },
+        "favoriteGenre": {
+          "type": ["string"],
+          "enum": ["Narrative", "NonFiction", "Poetry"]
+        },
+        "myReviews": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        },
+        "userPosts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Post"
+          }
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "required": ["title", "content"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "genre": {
+          "type": ["string"],
+          "enum": ["Narrative", "NonFiction", "Poetry"]
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "typology": {
+          "type": ["string"],
+          "enum": [
+            "Descriptive",
+            "Narrative",
+            "Expository",
+            "Argumentative",
+            "Literature"
+          ]
+        },
+        "cover": {
+          "type": "string"
+        },
+        "creatorID": {
+          "$ref": "#/definitions/User"
+        },
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Comment"
+          }
+        }
+      }
+    },
+    "Comment": {
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "Number",
+          "enum": [0, 1, 2, 3, 4, 5]
+        },
+        "creator": {
+          "type": "string",
+          "format": "uuid",
+          "$ref": "#/definitions/User"
+        },
+        "post": {
+          "$ref": "#/definitions/Post"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LoginDto": {
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "SignupDto": {
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "NewCommentDto": {
+        "properties": {
+          "$ref": "#/definitions/Comment"
+        }
+      }
+    }
+  }
+}
