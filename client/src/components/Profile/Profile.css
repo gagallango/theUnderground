@@ -1,17 +1,15 @@
 .main-profile {
-    position: fixed;
+    position: inherit;
     padding-left: 100px; 
     margin-left: 6%;
     margin-top: 3%;
     padding: 4%;
-    background: #F9F9F9;
     border-radius: 10px;
     border: 1px solid #c4c4c4;
 }
 
 .main-profile h4 {
     margin-bottom: 2%;
-    color: #a09abc;
     font-weight: 100;
 }
 
@@ -21,24 +19,24 @@
 }
 
 .link-posts {
-    color: #F9F9F9;
     font-size: 17px;
 }
 
 .link-posts:hover {
-    color: #F9F9F9;
+    color: #706a94;
 }
 .col-md-4 {
-    margin: 6% 6%;
-    background: #a09abc;
-    color: #F9F9F9;
+   margin: 6% 8%;
+    color: #504b6e;
     border-radius: 5px;
     padding: 2%;
+    background: #f8f8f8;
     width: 800px;
 }
 
 .title-profile {
-        background: #d5cfe1;
+    color: #7a7499;
+    font-size: 100px;
     padding: 4%;
     margin-bottom: 8%;
     border-radius: 5px;

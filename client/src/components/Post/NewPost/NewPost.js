@@ -52,9 +52,20 @@ class NewPost extends Component {
             .stop()
             .getMp3()
             .then(([buffer, blob]) => {
-                const blobURL = URL.createObjectURL(blob)
-                this.setState({ blobURL, isRecording: false });
-            }).catch((e) => console.log(e));
+                //const blobURL = URL.createObjectURL(blob)
+                let theBlob = new Blob(buffer, { type: 'audio/mpeg-3' })
+                console.log(theBlob.type)
+                //theBlob.type = 'audio/mpeg-3'
+                //console.log(blob.type)
+                return this.handleAudioUpload(theBlob)
+            })
+            .then(response => {
+                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
+                this.setState({
+                    ...this.state, blobURL: response.data.secure_url, isRecording: false
+                })
+            })
+            .catch(err => console.log(err)).catch((e) => console.log(e));
     };
 
     handleInputChange = e => {
@@ -91,17 +102,10 @@ class NewPost extends Component {
             .catch(err => console.log(err))
     }
 
-    handleAudioUpload = e => {
+    handleAudioUpload = blob => {
         const uploadData = new FormData()
-        uploadData.append('audio', e.target.files[0])
-        this.coverService.handleUploadAudio(uploadData)
-            .then(response => {
-                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
-                this.setState({
-                    ...this.state, audio: response.data.secure_url
-                })
-            })
-            .catch(err => console.log(err))
+        uploadData.append('audio', blob)
+        return this.coverService.handleUploadAudio(uploadData)
     }
 
     componentDidMount() {
@@ -172,7 +176,7 @@ class NewPost extends Component {
                             <audio src={this.state.blobURL} controls="controls" />
                         </Form.Group>
                         <br></br>
-                        <Button variant="primary" type="submit" >Publish</Button>
+                        <Button className="boton" variant="primary" type="submit" >Publish</Button>
                     </Form>
                 </Container>
             </>

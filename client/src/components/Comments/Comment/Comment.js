@@ -13,9 +13,10 @@ const ReviewCard = review => {
                     {review.content}
                 </Col>
                 <Col md={{ span: 8, offset: 1 }} className="rating-info">
-                    <img style={{ width: '10px' }} src='/images/star-icon.png' alt="RateIcon" />{review.rating}
+                    <img style={{ width: '13px', marginRight: '5px', marginBottom: '3px' }} src='/images/star-icon.png' alt="RateIcon" />{review.rating}
                 </Col>
             </div>
+            <hr></hr>
         </>
     )
 }

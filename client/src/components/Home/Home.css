@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    background: #F9F9F9;
 }
 
 
@@ -79,7 +78,7 @@ section .scroll {
 
 section .scroll div {
     color: #a09abc;
-    font-size:1em ;
+    font-size:1.5em ;
     white-space: nowrap;
     font-weight: 900;
     text-transform: uppercase;

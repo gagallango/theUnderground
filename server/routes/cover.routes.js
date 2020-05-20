@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer')
 const uploader = require('../configs/cloudinary.configs');
+const mp3Uploader = require('../configs/cloudinaryAudio.configs');
 const ffmpeg = require('ffmpeg')
 const uploadLocal = multer({ dest: './public/uploads/' })
 
@@ -21,6 +22,8 @@ router.post('/uploadProfilePic', uploader.single("profilePic"), (req, res, next)
     res.json({ secure_url: req.file.secure_url });
 })
 
-router.post('/uploadAudio', uploader.single('audioRequest', { resource_type: 'raw' }), (req, res) => res.json(req.file.url))
+router.post('/uploadAudio', mp3Uploader.single('audio'), (req, res) => {
+    console.log(req.file)
+})
 
 module.exports = router;

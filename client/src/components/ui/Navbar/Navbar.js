@@ -32,16 +32,15 @@ class Navigation extends Component {
                                 :
                                 <>
 
-                                    <img style={{ width: '100px', borderRadius: '50px', marginLeft: '-15px' }} src={this.props.loggedInUser.profilePic} alt="" />
+                                    <img style={{ width: '100px', borderRadius: '50px' }} src={this.props.loggedInUser.profilePic} alt="" />
                                     <p className="hi-username">Hi, {this.props.loggedInUser.username}</p>
                                     <br />
                                     <Link className="a-main" to="/explore">Explore</Link>
                                     <Link className="a-main" to="/profile">Profile</Link>
                                     <Link className="a-main" to="/post/new">New Post</Link>
-                                    <Link className="logout" to="/" as="div" onClick={this.logout}>Logout</Link>
+                                    <Link style={{ fontSize: '15px' }} to="/" as="div" onClick={this.logout}>Logout</Link>
 
                                 </>
-
                         }
 
                     </ul>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import CommentService from '../../../service/comment.service'
+import './CommentForm.css'
 
 class CommentForm extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class CommentForm extends Component {
     render() {
         return (
             <>
-                <Col md={{ span: 8, offset: 1 }}>
+                <div className="comment-form">
                     <Form className="comment-form" onSubmit={this.handleSubmit}>
                         <Form.Group controlId="exampleForm.ControlTextarea1">
                             <Form.Control placeholder="Write your comment" as="textarea" rows="3" name="content" value={this.state.content} onChange={this.handleInputChange} />
@@ -54,7 +54,8 @@ class CommentForm extends Component {
                         </Form.Group>
                         <Button className="boton" type="submit">Add</Button>
                     </Form>
-                </Col>
+                </div>
+
             </>
         )
     }

@@ -1,3 +1,32 @@
 /* .alluserposts {
         position: absolute;
 } */
+
+
+.posts-wrapper{
+        display:flex;
+        justify-content:space-between;
+        flex-wrap: wrap;
+}
+
+.card-post{
+        width: 31%;
+    background: #f8f8f8;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 20px;
+    height: 245px;
+    margin-bottom: 20px;
+
+}
+
+.card-post:hover{
+        
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.1);
+
+}
+
+.filters {
+           margin: 3% auto;
+    display: flex;
+}

@@ -1,14 +1,11 @@
 .main-nav{
-    width:200px ; 
-    display:flex;
-    flex-direction:column;
-    height:100vh;
-    background-color:#a09abc;
-    color:#F9F9F9; 
-   
+   position: fixed;
+    z-index: 1;
+    padding: 8px 0;
+
 } .main-nav a {
     text-decoration: none;
-    color: #F9F9F9;
+    color: #7a7499;
         font-size: 22px;
 }
 
@@ -26,18 +23,14 @@
 .nav-items ul li{
     padding:10px;
     font-size:12px;
-    color:#F9F9F9;
-}
-
-.logout {
-    font-size: 15px;
 }
 
 .a-main {
-    font-weight: 600;
+
 }
 
 .hi-username {
     margin-top: 20px;
     font-size: 20px;
+    color: #7a7499;
 }

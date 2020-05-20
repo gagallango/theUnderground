@@ -6,6 +6,7 @@ import Comment from '../../Comments/Comment/Comment'
 import CommentForm from '../../Comments/CommentForm/CommentForm'
 import './UserPost.css'
 import Modal from 'react-bootstrap/Modal'
+import { Link } from 'react-router-dom'
 
 class UserPost extends Component {
     constructor(props) {
@@ -68,7 +69,6 @@ class UserPost extends Component {
     }
 
     render() {
-        console.log(this.state)
         if (!this.state.creatorID) {
             return <h1></h1>
         } else {
@@ -81,49 +81,38 @@ class UserPost extends Component {
                             </Modal.Body>
                         </Modal>
                         <div className="main-text">
-                            <div className="row">
-                                <div className="col-7">
-                                    {this.state.creatorID ? <h6>{this.state.creatorID.username}</h6> : null}
-                                    <h2>{this.state.title}</h2>
-                                    <div className="genre-typo">
-                                        <p className="genre-genre"><b>Genre:</b> {this.state.genre}</p>
-                                        <p className="genre-typology"><b>Typology:</b> {this.state.typology}</p>
-                                    </div>
-                                    <p className="content-box">{this.state.content}</p>
-                                    {this.state.creatorID._id === this.props.loggedInUser._id ?
-                                        <div className="buttons-post">
-                                            <Button className="boton" onClick={() => this.handleDelete(this.state._id)}>Delete</Button>
-                                            <Button className="boton" onClick={this.showModal}>Update</Button>
-                                        </div>
-                                        :
-                                        <Button onClick={this.submitLike}><img style={{ width: '15px' }} src='/images/black-heart.png' alt="LikeIcon" /></Button>
-                                    }
-                                </div>
-                                <div className="col-5">
-                                    <img style={{ width: '400px' }} src={this.state.cover} alt={this.state.title} />
-                                </div>
+                            <Link onClick={this.goBack}> <img style={{ width: '15px', marginBottom: '20px' }} src='/images/left-arrow.png' alt="" /> </Link>
+                            <p> Written by: {this.state.creatorID ? <h6>{this.state.creatorID.username}</h6> : null}</p>
 
+                            <h2 className="post-title">{this.state.title}</h2>
+                            <div className="genre-typo" style={{ display: 'inline-flex' }}>
+                                <p className="genre-genre"><b>Genre:</b> {this.state.genre}</p>
+                                <p className="genre-genre"><b>Typology:</b> {this.state.typology}</p>
                             </div>
-
+                            <div className="cover-image">
+                                <img style={{ width: '500px', margin: '2%' }} src={this.state.cover} alt={this.state.title} />
+                            </div>
+                            <p className="content-box">{this.state.content}</p>
+                            {this.state.creatorID._id === this.props.loggedInUser._id ?
+                                <div className="buttons-post">
+                                    <Button className="boton" onClick={() => this.handleDelete(this.state._id)}>Delete</Button>
+                                    <Button className="boton" onClick={this.showModal}>Update</Button>
+                                </div>
+                                :
+                                <Link onClick={this.submitLike}><img style={{ width: '15px' }} src='/images/grey-heart.png' alt="LikeIcon" /></Link>
+                            }
                         </div>
                         <div className="main-image">
-                            <div className="row">
-                                <div className="col-6">
-                                    {this.state && this.displayComment()}
+                            <h2>Comments</h2>
+                            {this.state && this.displayComment()}
+                            {this.state.creatorID._id === this.props.loggedInUser._id ?
+                                null
+                                :
+                                <div>
+                                    <CommentForm user={this.props.loggedInUser} post={this.state._id} newCommentAdded={() => this.handleNewComment()} />
                                 </div>
-                                <div className="col-4">
-
-                                    {this.state.creatorID._id === this.props.loggedInUser._id ?
-                                        null
-                                        :
-                                        <div>
-                                            <CommentForm user={this.props.loggedInUser} post={this.state._id} newCommentAdded={() => this.handleNewComment()} />
-                                        </div>
-                                    }
-                                </div>
-                            </div>
+                            }
                         </div>
-                        <Button className="boton" onClick={this.goBack}>Go back</Button>
                     </div>
                 </>
             )
