@@ -16,6 +16,11 @@ class UserPost extends Component {
             comments: []
         }
         this.postService = new PostService()
+        this.goBack = this.goBack.bind(this)
+    }
+
+    goBack() {
+        this.props.history.goBack();
     }
 
     displayThePost = () => {
@@ -118,6 +123,7 @@ class UserPost extends Component {
                                 </div>
                             </div>
                         </div>
+                        <Button className="boton" onClick={this.goBack}>Go back</Button>
                     </div>
                 </>
             )

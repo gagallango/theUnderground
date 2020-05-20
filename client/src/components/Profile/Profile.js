@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 
 
 import PostService from '../../service/post.service'
@@ -52,20 +53,16 @@ class Profile extends Component {
                                 </div>
 
                             </div>
-
                             <div className="col-md-4">
-
                                 <div className="title-profile">
                                     <h4>Liked posts</h4>
                                 </div>
                                 <div className="post-list">
                                     <p>{this.displayLikedPosts()}</p>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </>
             )
         } else {
