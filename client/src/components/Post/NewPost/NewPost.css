@@ -15,8 +15,9 @@
 } */
 
  .title {
-    margin-bottom: 2%;
+       margin-bottom: 2%;
     color: #7a7499;
+    font-size: 50px;
     font-weight: 100;
 } 
 
@@ -27,6 +28,6 @@
 } */
 
 .newpost {
-    padding: 3%;
+    padding: 2%;
     border-radius: 5px;
 }

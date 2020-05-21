@@ -29,10 +29,17 @@ router.post('/new', (req, res, next) => {
 })
 
 
-router.get('/:id/delete', (req, res, next) => {
-    Comment.findByIdAndRemove(req.params.id, { new: true })
+router.get('/deleteComment/:id', (req, res, next) => {
+    console.log("ola estoy en deleteComment")
+    Comment.findById(req.params.id)
+        .then((comment) => {
+            return User.findByIdAndUpdate(comment.creator, { $pull: { myReviews: comment._id } }, { new: true })
+        })
+        .then(comment => Post.findByIdAndUpdate(comment.post, { $pull: { comments: comment._id } }, { new: true }))
+        .then(postUpdated => {
+            return Comment.findByIdAndRemove(req.params.id)
+        })
         .then(data => res.json(data))
-        .catch(err => console.log(err))
+        .catch(err => next(new Error(err)))
 })
-
 module.exports = router

@@ -45,6 +45,18 @@ const PostEditor = ({ savePost, postContent }) => {
                             }
                         },
                         {
+                            type: "list",
+                            data: {
+                                style: "unordered",
+                                items: [
+                                    "Add",
+                                    "A",
+                                    "List",
+                                    "Here."
+                                ]
+                            }
+                        },
+                        {
                             type: "paragraph",
                             data: {
                                 text:

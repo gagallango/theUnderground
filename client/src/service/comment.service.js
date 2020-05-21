@@ -6,4 +6,5 @@ export default class posts {
     }
 
     addComment = comment => this.service.post('/comment/new', comment)
+    deleteComment = comment => this.service.get(`/comment/deleteComment/${comment}`)
 }

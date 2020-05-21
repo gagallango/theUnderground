@@ -7,6 +7,7 @@ import CommentForm from '../../Comments/CommentForm/CommentForm'
 import './UserPost.css'
 import Modal from 'react-bootstrap/Modal'
 import { Link } from 'react-router-dom'
+import CommentService from '../../../service/comment.service'
 
 class UserPost extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ class UserPost extends Component {
             comments: []
         }
         this.postService = new PostService()
+        this.commentService = new CommentService()
         this.goBack = this.goBack.bind(this)
     }
 
@@ -36,7 +38,7 @@ class UserPost extends Component {
     }
 
     displayComment = () => {
-        return this.state.comments.map(comment => <Comment key={comment._id} {...comment} />)
+        return this.state.comments.map(comment => <Comment isCreator={comment.creator._id === this.props.loggedInUser._id} handleDelete={(reviewID) => this.deleteComment(reviewID)} key={comment._id} review={comment} />)
     }
 
     handleDelete = (id) => {
@@ -46,6 +48,13 @@ class UserPost extends Component {
             })
             .catch(err => console.log(err))
     }
+
+    deleteComment = id => {
+        this.commentService.deleteComment(id)
+            .then((info) => this.displayThePost())
+            .catch(err => console.log(err))
+    }
+
 
     showModal = () => this.setState({ modalShow: true })
     hideModal = () => this.setState({ modalShow: false })
@@ -72,7 +81,6 @@ class UserPost extends Component {
         if (!this.state.creatorID) {
             return <h1></h1>
         } else {
-            console.log(this.state.content)
             return (
                 <>
                     <div className="post-details">

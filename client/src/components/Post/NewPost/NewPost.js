@@ -26,47 +26,11 @@ class NewPost extends Component {
             typology: 'Descriptive',
             cover: '',
             redirect: false,
-            isRecording: false,
-            blobURL: '',
-            isBlocked: false,
             audio: ''
         }
         this.newPostService = new PostService()
         this.coverService = new CoverService()
     }
-
-    start = () => {
-        if (this.state.isBlocked) {
-            console.log('Permission Denied');
-        } else {
-            Mp3Recorder
-                .start()
-                .then(() => {
-                    this.setState({ isRecording: true });
-                }).catch((e) => console.error(e));
-        }
-    };
-
-    stop = () => {
-        Mp3Recorder
-            .stop()
-            .getMp3()
-            .then(([buffer, blob]) => {
-                //const blobURL = URL.createObjectURL(blob)
-                let theBlob = new Blob(buffer, { type: 'audio/mpeg-3' })
-                console.log(theBlob.type)
-                //theBlob.type = 'audio/mpeg-3'
-                //console.log(blob.type)
-                return this.handleAudioUpload(theBlob)
-            })
-            .then(response => {
-                console.log('El archivo ya se ha subido. La URL de cloudinary es: ', response.data.secure_url)
-                this.setState({
-                    ...this.state, blobURL: response.data.secure_url, isRecording: false
-                })
-            })
-            .catch(err => console.log(err)).catch((e) => console.log(e));
-    };
 
     handleInputChange = e => {
         const { name, value } = e.target
@@ -100,25 +64,6 @@ class NewPost extends Component {
                 })
             })
             .catch(err => console.log(err))
-    }
-
-    handleAudioUpload = blob => {
-        const uploadData = new FormData()
-        uploadData.append('audio', blob)
-        return this.coverService.handleUploadAudio(uploadData)
-    }
-
-    componentDidMount() {
-        navigator.getUserMedia({ audio: true },
-            () => {
-                console.log('Permission Granted');
-                this.setState({ isBlocked: false });
-            },
-            () => {
-                console.log('Permission Denied');
-                this.setState({ isBlocked: true })
-            },
-        );
     }
 
     handlePostContent(content) {
@@ -172,12 +117,6 @@ class NewPost extends Component {
                             <Form.Label>Choose your cover</Form.Label>
                             <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
-                        {/* <Form.Group>
-                            <Form.Label>Record your text so anyone can hear it</Form.Label>
-                            <Button onClick={this.start} disabled={this.state.isRecording}>Record</Button>
-                            <Button onClick={this.stop} disabled={!this.state.isRecording} >Stop</Button>
-                            <audio src={this.state.blobURL} controls="controls" />
-                        </Form.Group> */}
                         <br></br>
                         <Button className="boton" variant="primary" type="submit" >Publish</Button>
                     </Form>

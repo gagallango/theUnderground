@@ -16,7 +16,7 @@ class Profile extends Component {
     }
 
     displayPosts = () => {
-        return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} className="link-posts" key={idx}><li>{post.title} </li></Link >)
+        return this.state.posts.map((post, idx) => <Link to={`/post/detail/${post._id}`} className="link-posts" key={idx}><li>{post.title} <br></br> <p className="p-profile" style={{ color: '#706a94', fontSize: '10px' }}>{post.genre}</p></li></Link >)
     }
 
     displayLikedPosts = () => {
@@ -38,7 +38,7 @@ class Profile extends Component {
                     <div className="row">
                         <div className="col-md-4">
                             <div className="title-profile">
-                                <h4 style={{ fontSize: '35px' }}>Posts you've done<img style={{ width: '20px', marginLeft: '20px' }} src='/images/grey-pen.png' alt="LikeIcon" /></h4>
+                                <h4 style={{ fontSize: '35px' }}>Posts you've done<img style={{ width: '30px', marginLeft: '20px' }} src='/images/grey-pen.png' alt="LikeIcon" /></h4>
                             </div>
                             <div className="post-list">
                                 <p>{this.displayPosts()}</p>
@@ -46,7 +46,7 @@ class Profile extends Component {
                         </div>
                         <div className="col-md-4">
                             <div className="title-profile">
-                                <h4 style={{ fontSize: '35px' }}>Liked posts<img style={{ width: '15px', marginLeft: '20px' }} src='/images/grey-heart.png' alt="LikeIcon" /></h4>
+                                <h4 style={{ fontSize: '35px' }}>Liked posts<img style={{ width: '25px', marginLeft: '20px' }} src='/images/grey-heart.png' alt="LikeIcon" /></h4>
                             </div>
                             <div className="post-list">
                                 <p>{this.displayLikedPosts()}</p>

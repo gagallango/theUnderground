@@ -15,9 +15,10 @@
 
 .nav-items ul{
     list-style: none;
-    width:100%;
     display:flex;
-    flex-direction:column
+    width: 100%;
+    flex-direction:column;
+ 
 }
 
 .nav-items ul li{
@@ -31,6 +32,6 @@
 
 .hi-username {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 15px;
     color: #7a7499;
 }

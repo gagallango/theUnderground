@@ -1,8 +1,13 @@
 import React from 'react'
 import Col from 'react-bootstrap/Col'
 import './Comment.css'
+import Button from 'react-bootstrap/Button'
 
-const ReviewCard = review => {
+
+const ReviewCard = (props) => {
+
+    const { isCreator, review, handleDelete } = props
+
 
     return (
         <>
@@ -16,6 +21,12 @@ const ReviewCard = review => {
                 <Col md={{ span: 8, offset: 1 }} className="rating-info">
                     <img style={{ width: '13px', marginRight: '5px', marginBottom: '3px' }} src='/images/star-icon.png' alt="RateIcon" />{review.rating}
                 </Col>
+                {isCreator &&
+                    <Col md={{ span: 8, offset: 1 }} className="comment">
+                        <Button style={{ marginTop: '20px' }} className="boton" onClick={() => handleDelete(review._id)}>Delete</Button>
+                    </Col>
+
+                }
             </div>
             <hr></hr>
         </>

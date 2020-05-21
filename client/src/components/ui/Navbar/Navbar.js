@@ -35,10 +35,11 @@ class Navigation extends Component {
                                     <img style={{ width: '100px', borderRadius: '50px' }} src={this.props.loggedInUser.profilePic} alt="" />
                                     <p className="hi-username">Hi, {this.props.loggedInUser.username}</p>
                                     <br />
-                                    <Link className="a-main" to="/explore">Explore</Link>
-                                    <Link className="a-main" to="/profile">Profile</Link>
-                                    <Link className="a-main" to="/post/new">New Post</Link>
+                                    <Link className="a-main" to="/explore">Explore <img style={{ width: '20px' }} src='/images/lupa.png' alt="" /></Link>
+                                    <Link className="a-main" to="/profile">Profile <img style={{ width: '20px' }} src='/images/user.png' alt="" /></Link>
+                                    <Link className="a-main" to="/post/new">New Post <img style={{ width: '22px' }} src='/images/grey-pen.png' alt="" /></Link>
                                     <Link style={{ fontSize: '15px' }} to="/" as="div" onClick={this.logout}>Logout</Link>
+
 
                                 </>
                         }

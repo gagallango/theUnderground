@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PostService from '../../../service/post.service'
 import PostCard from '../PostCard/PostCard'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 import './AllUserPosts.css'
 
 class AllUserPosts extends Component {
@@ -12,7 +13,8 @@ class AllUserPosts extends Component {
             posts: [],
             filteredPosts: [],
             genreValue: '',
-            typologyValue: ''
+            typologyValue: '',
+            randomChoice: {}
         }
         this.postService = new PostService()
     }
@@ -48,13 +50,21 @@ class AllUserPosts extends Component {
         this.setState({ typologyValue: value }, () => this.filterSearch())
     }
 
+
+    randomPost = () => {
+        const random = Math.floor(Math.random() * this.state.filteredPosts.length)
+        const choice = this.state.filteredPosts[random]
+        this.props.history.push(`post/detail/${choice._id}`)
+    }
+
+
+
     render() {
-        console.log(this.state.filteredPosts)
         return (
             <>
-                <div className="row">
+                <div style={{ marginLeft: '18%' }} className="row">
                     <div className="filters">
-                        <div className="col-5">
+                        <div className="col-3">
                             <Form>
                                 <Form.Group controlId="exampleForm.SelectCustom">
                                     <Form.Label>Choose by genre</Form.Label>
@@ -67,10 +77,10 @@ class AllUserPosts extends Component {
                             </Form>
 
                         </div>
-                        <div className="col-5">
+                        <div className="col-3">
                             <Form>
                                 <Form.Group controlId="exampleForm.SelectCustom">
-                                    <Form.Label>Choose by typology</Form.Label>
+                                    <Form.Label style={{ textAlign: 'center' }}>Choose by typology</Form.Label>
                                     <Form.Control onChange={this.handleFilterByTypology} as="select" style={{ width: '200px' }} custom>
                                         <option value="Descriptive">Descriptive</option>
                                         <option value="Narrative">Narrative</option>
@@ -80,6 +90,10 @@ class AllUserPosts extends Component {
                                     </Form.Control>
                                 </Form.Group>
                             </Form>
+                        </div>
+                        <div className="col-4">
+                            <p>Don't know what to read?</p> <br></br> <Button onClick={this.randomPost} className="boton" style={{ marginTop: '-50px', marginLeft: '30px' }}>CLICK HERE</Button>
+
                         </div>
                     </div>
                 </div>
