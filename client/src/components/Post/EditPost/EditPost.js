@@ -109,7 +109,7 @@ class NewPost extends Component {
                             <Form.Label>Choose your cover</Form.Label>
                             <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
-                        <Button variant="primary" type="submit" >Update</Button>
+                        <Button className="boton" type="submit" >Update</Button>
                     </Form>
                 </Container>
             </>

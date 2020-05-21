@@ -3,6 +3,7 @@ import Col from 'react-bootstrap/Col'
 import './Comment.css'
 
 const ReviewCard = review => {
+
     return (
         <>
             <div className="comment-style">

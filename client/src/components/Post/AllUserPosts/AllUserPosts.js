@@ -49,6 +49,7 @@ class AllUserPosts extends Component {
     }
 
     render() {
+        console.log(this.state.filteredPosts)
         return (
             <>
                 <div className="row">
@@ -83,7 +84,7 @@ class AllUserPosts extends Component {
                     </div>
                 </div>
 
-                <div class="posts-wrapper">
+                <div className="posts-wrapper">
                     {this.displayPosts()}
                 </div>
             </>

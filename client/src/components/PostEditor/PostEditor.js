@@ -55,7 +55,7 @@ const PostEditor = ({ savePost, postContent }) => {
                     version: "2.12.4"
                 }}
             />
-            <button onClick={(e) => handleSave(e)}>Save!</button>
+            <button style={{ color: 'white' }} onClick={(e) => handleSave(e)}>Save!</button>
 
         </React.Fragment>
     );

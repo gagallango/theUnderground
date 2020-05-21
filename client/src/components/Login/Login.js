@@ -62,7 +62,7 @@ class Login extends Component {
                         </Col>
                         <Col className="join-the" md={6}>
                             <h1 >LOGIN</h1>
-                            <p style={{ fontSize: '20px', marginTop: '-30px' }}>WE'RE NOT GONNA JUDGE YOU, <br></br> WE KNOW YOU'RE SUCH A GOOD WRITER</p>
+                            <p style={{ fontSize: '20px', marginTop: '-30px' }}>WE KNOW YOU'RE SUCH A GOOD WRITER</p>
                         </Col>
                     </Row>
                 </Container>

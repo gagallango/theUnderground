@@ -73,7 +73,7 @@ class Signup extends Component {
                             <div className="title-form">
                                 <h1>JOIN <br></br> THE <br></br>HOOD</h1>
                             </div>
-                            <p style={{ fontSize: '20px', marginTop: '-30px' }}>Already have an account? <Link style={{ color: "#f9f9f9" }} to="/login">Login</Link></p>
+                            <p style={{ fontSize: '20px', marginTop: '-30px' }}>ALREADY HAVE AN ACCOUNT? <Link style={{ color: "#f9f9f9" }} to="/login">LOGIN</Link></p>
                         </Col>
                         <Col className="sign-form" md={6}>
                             <Form onSubmit={this.handleSubmit} className="join-form">

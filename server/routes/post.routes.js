@@ -21,7 +21,7 @@ router.post('/likePost', (req, res, next) => {
 })
 
 
-router.post('/newPost', (req, res, next) => {
+router.post('/newPost', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     const { title, content, genre, typology, audio, cover, user } = req.body
     const postInfo = {
         title,
