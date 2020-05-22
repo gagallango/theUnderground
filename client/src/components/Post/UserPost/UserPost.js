@@ -98,15 +98,24 @@ class UserPost extends Component {
                                 <p className="genre-genre"><b>Genre:</b> {this.state.genre}</p>
                                 <p className="genre-genre"><b>Typology:</b> {this.state.typology}</p>
                             </div>
-                            <div className="cover-image">
-                                <img style={{ width: '500px', margin: '2%' }} src={this.state.cover} alt={this.state.title} />
-                            </div>
+                            {this.state.cover &&
+                                <div className="cover-image">
+                                    <img style={{ width: '500px', margin: '2%' }} src={this.state.cover} alt={this.state.title} />
+                                </div>
+                            }
+
                             <p className="content-box">
                                 {this.state.content.blocks.map(block => {
                                     if (block.type === "header") {
-                                        return <h2>{block.data.text}</h2>
+                                        return <h4>{block.data.text}</h4>
                                     } else if (block.type === "paragraph") {
                                         return <p>{block.data.text}</p>
+                                    } else if (block.type === "list") {
+                                        return (
+                                            <ul>
+                                                {block.data.items.map(item => <li >{item}</li>)}
+                                            </ul>
+                                        )
                                     }
                                 })}
 

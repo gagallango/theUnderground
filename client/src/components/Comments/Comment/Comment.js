@@ -23,7 +23,7 @@ const ReviewCard = (props) => {
                 </Col>
                 {isCreator &&
                     <Col md={{ span: 8, offset: 1 }} className="comment">
-                        <Button style={{ marginTop: '20px' }} className="boton" onClick={() => handleDelete(review._id)}>Delete</Button>
+                        <button style={{ marginTop: '20px' }} className="boton" onClick={() => handleDelete(review._id)}>Delete</button>
                     </Col>
 
                 }

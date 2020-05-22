@@ -118,7 +118,7 @@ class NewPost extends Component {
                             <Form.Control name="cover" type="file" onChange={this.handleFileUpload} />
                         </Form.Group>
                         <br></br>
-                        <Button className="boton" variant="primary" type="submit" >Publish</Button>
+                        <Button className="boton" type="submit" >Publish</Button>
                     </Form>
                 </Container>
             </>

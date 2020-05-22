@@ -1,5 +1,5 @@
 .yay{
-    text-align: center;
+    text-align: left;
     font-size: 10px;
 }
 
@@ -8,7 +8,6 @@
 }
 
 .card-link {
-   text-align: center;
-   margin-top: 20%;
+   text-align: left;
 }
 

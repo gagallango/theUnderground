@@ -42,6 +42,8 @@
     margin-left: 1%;
     border: none;
     color: #675b85;
+    border-radius: 4px;
+    padding: 5px 10px;
 }
 
 .boton:hover {
@@ -49,6 +51,7 @@ background: #675b85;
 border: none;
     margin-left: 1%;
     color: #f9f9f9;
+    border-radius: 4px;
 }
 
 .post-title {

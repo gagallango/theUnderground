@@ -52,7 +52,7 @@ class CommentForm extends Component {
                                 <option>5</option>
                             </Form.Control>
                         </Form.Group>
-                        <Button className="boton" type="submit">Add</Button>
+                        <button className="boton" type="submit">Add</button>
                     </Form>
                 </div>
 
