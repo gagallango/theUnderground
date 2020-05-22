@@ -8,9 +8,7 @@ We know you're a good writter, show us your magic!
 
 ## Built with
 
-React JS - 
-Node JS - 
-Mongo DB
+React.js - Javascript ES6 - Cloudinary - Node.js - Express.js - MongoDB - Bootstrap React - CSS3
 
 ## Creator
 Gabriela Gallango
