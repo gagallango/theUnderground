@@ -8,8 +8,8 @@ We know you're a good writter, show us your magic!
 
 ## Built with
 
-React JS
-Node JS
+React JS - 
+Node JS - 
 Mongo DB
 
 ## Creator
