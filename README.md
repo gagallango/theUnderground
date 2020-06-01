@@ -4,7 +4,7 @@ The Underground is a writing and content creator platform dedicated to all the f
 
 It's very simple, you just have to write whatever you want, choising the genre and typology of your text and a perfect cover to make it look cute for those who want to read it. 
 
-We know you're a good writter, show us your magic!
+We know you're a good writer, show us your magic!
 
 ## Built with
 
