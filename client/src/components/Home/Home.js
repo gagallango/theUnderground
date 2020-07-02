@@ -19,7 +19,7 @@ const Home = () => {
             </div>
             <section>
                 <div className="scroll text">
-                    <div>holaaaaaa a writing and content creator platform - a writing and content creator platform - a writing and content creator plat</div>
+                    <div>a writing and content creator platform - a writing and content creator platform - a writing and content creator plat</div>
                 </div>
             </section>
         </>
